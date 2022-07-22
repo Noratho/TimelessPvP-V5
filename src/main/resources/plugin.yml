@@ -1,0 +1,10 @@
+name: TimelessPvP5
+version: '${project.version}'
+main: me.timelesspvp.timelesspvp5.TimelessPvP5
+api-version: 1.19
+authors: [ Noratho ]
+description: Timeless PvP plugin made for The BIG server
+commands:
+  kits:
+    description: Get a gui of all the kits in timeless
+    usage: /<command>
