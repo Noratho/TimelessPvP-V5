@@ -1,0 +1,6 @@
+Food: 'test'
+Amount: 10
+Price: 10.20
+Ingredients:
+  - 'cinamon'
+  - 'sugar'
