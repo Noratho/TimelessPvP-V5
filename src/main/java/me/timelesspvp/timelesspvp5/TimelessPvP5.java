@@ -33,16 +33,6 @@ public final class TimelessPvP5 extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
-        // Scout
-//        k01ScoutConfig.setup();
-//        k01ScoutConfig.get().addDefault("Effects.saturation","");
-//        k01ScoutConfig.get().addDefault("Armor","");
-//        k01ScoutConfig.get().addDefault("Items","");
-//        k01ScoutConfig.get().options().copyDefaults(true);
-//        k01ScoutConfig.save();
-
-        // Archer
-
     }
 
 

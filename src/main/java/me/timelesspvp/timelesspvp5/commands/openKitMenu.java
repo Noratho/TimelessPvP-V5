@@ -54,7 +54,8 @@ public class openKitMenu implements CommandExecutor {
             ArrayList<String> lore = new ArrayList<>();
             lore.add("test1");
             lore.add("test2");
-            scoutMeta.setLore(lore);
+//            scoutMeta.setLore(lore);
+
 
 
             archerSel.setItemMeta(archerMeta);

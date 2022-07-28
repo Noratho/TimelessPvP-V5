@@ -68,7 +68,7 @@ public class k02Scout {
         // Potion
         PotionEffect pSat = new PotionEffect(
                 PotionEffectType.SATURATION,
-                10000000, 1,
+                10000000, 0,
                 false, false);
 
         PotionEffect pSpeed = new PotionEffect(
