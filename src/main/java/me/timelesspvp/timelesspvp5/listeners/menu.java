@@ -30,24 +30,30 @@ public class menu implements Listener {
 
                 // Archer
                 case ARROW -> {
-                    Bukkit.getLogger().info("Archer Choose");
-                    p.closeInventory();
-                    removeEffects(p);
-//                    Inventory storage = Bukkit.createInventory(p, 27);
-//                    storage.setContents(p.getInventory().getContents());
+
+                    // Store inv and prev location data
                     Inventory storage = Bukkit.createInventory(p, InventoryType.PLAYER);
                     storage.setContents(p.getInventory().getContents());
-
                     TimelessPvP5.addEntryInvs(p.getUniqueId(), storage, p.getLocation());
+
                     p.getInventory().clear();
+                    removeEffects(p);
+                    p.closeInventory();
                     k01Archer.giveKit(p);
                 }
 
                 // Scout
                 case BLACK_STAINED_GLASS -> {
                     Bukkit.getLogger().info("Scout Choose");
-                    p.closeInventory();
+
+                    // Store inv and prev location data
+                    Inventory storage = Bukkit.createInventory(p, InventoryType.PLAYER);
+                    storage.setContents(p.getInventory().getContents());
+                    TimelessPvP5.addEntryInvs(p.getUniqueId(), storage, p.getLocation());
+
+                    p.getInventory().clear();
                     removeEffects(p);
+                    p.closeInventory();
                     k02Scout.giveKit(p);
                 }
             }

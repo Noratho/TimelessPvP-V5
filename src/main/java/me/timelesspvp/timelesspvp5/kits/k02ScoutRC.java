@@ -1,12 +1,15 @@
 package me.timelesspvp.timelesspvp5.kits;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
+import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Particle;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class k02ScoutRC {
 
@@ -21,7 +24,7 @@ public class k02ScoutRC {
 
         Arrow bullet = p.getWorld().spawnArrow(
                 spawnLoc, p.getEyeLocation().getDirection(),
-                (float) 0.6, 0);
+                0.6f, 0);
 
         PersistentDataContainer data = bullet.getPersistentDataContainer();
 
@@ -29,6 +32,21 @@ public class k02ScoutRC {
                 "k02ScoutBullet"), PersistentDataType.INTEGER, damage);
 
 
-        bullet.setVelocity(p.getLocation().getDirection().multiply(0.8) );
+        bullet.setVelocity(p.getLocation().getDirection().multiply(0.8));
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (!bullet.isDead()) {
+                    Particle.DustOptions options =
+                            new Particle.DustOptions(Color.fromRGB(255,255,0), 0.5f);
+                    bullet.getWorld().spawnParticle(Particle.REDSTONE,
+                            bullet.getLocation(), 1, options);
+                } else {
+                    cancel();
+                }
+
+            }
+        }.runTaskTimer(TimelessPvP5.getPlugin(), 0L, 1L);
     }
 }
