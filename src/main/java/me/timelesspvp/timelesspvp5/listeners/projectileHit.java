@@ -1,6 +1,7 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -11,7 +12,7 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-public class projectileHitPlayer implements Listener {
+public class projectileHit implements Listener {
 
     @EventHandler
     public void projectileHits(ProjectileHitEvent e) {
@@ -23,18 +24,24 @@ public class projectileHitPlayer implements Listener {
 
             PersistentDataContainer data = pro.getPersistentDataContainer();
 
+            // If hit by scout pocket pistol bullet
             if (data.has(new NamespacedKey(TimelessPvP5.getPlugin(),
                     "k02ScoutBullet"), PersistentDataType.INTEGER)) {
 
-                e.setCancelled(true);
+                // Cancel the damage
+//                e.setCancelled(true);
+                // Get the damage stored in th nbt
                 int damage = data.get(new NamespacedKey(TimelessPvP5.getPlugin(),
                         "k02ScoutBullet"), PersistentDataType.INTEGER);
-
+                // if entity is living give dmg
                 if (ent instanceof LivingEntity) {
                     ((LivingEntity) ent).damage(damage);
                 }
 
+                e.setCancelled(true);
+                pro.remove();
             }
+
 
 
         }

@@ -21,6 +21,7 @@ public final class TimelessPvP5 extends JavaPlugin {
         // Listeners
         getServer().getPluginManager().registerEvents(new rightClick(),this);
         getServer().getPluginManager().registerEvents(new menu(),this);
+        getServer().getPluginManager().registerEvents(new projectileHit(),this);
 
         // Commands
         getCommand("kits").setExecutor(new openKitMenu());
