@@ -10,12 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
-
-import java.io.Console;
-import java.util.ArrayList;
 
 
 public class openKitMenu implements CommandExecutor {
@@ -42,6 +37,10 @@ public class openKitMenu implements CommandExecutor {
                             ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Archer" +
                             ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
 
+            archerSel.setItemMeta(archerMeta);
+            inv.addItem(archerSel);
+
+
             // Scout
             ItemStack scoutSel = new ItemStack(Material.BLACK_STAINED_GLASS, 1);
             ItemMeta scoutMeta = scoutSel.getItemMeta();
@@ -50,19 +49,9 @@ public class openKitMenu implements CommandExecutor {
                             ChatColor.WHITE + "" + ChatColor.BOLD + "Scout" +
                             ChatColor.BLACK + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
 
-            // Lore
-            ArrayList<String> lore = new ArrayList<>();
-            lore.add("test1");
-            lore.add("test2");
-//            scoutMeta.setLore(lore);
-
-
-
-            archerSel.setItemMeta(archerMeta);
-            inv.addItem(archerSel);
-
             scoutSel.setItemMeta(scoutMeta);
             inv.addItem(scoutSel);
+
 
             p.openInventory(inv);
 

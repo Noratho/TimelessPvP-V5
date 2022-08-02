@@ -8,3 +8,6 @@ commands:
   kits:
     description: Get a gui of all the kits in timeless
     usage: /<command>
+  leave:
+    description: Leave the arena
+    usage: /<command>
