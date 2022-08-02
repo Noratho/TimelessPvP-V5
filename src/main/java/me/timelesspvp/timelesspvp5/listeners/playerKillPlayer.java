@@ -18,6 +18,7 @@ public class playerKillPlayer implements Listener {
             ItemStack healToken = new ItemStack(Material.RED_DYE, 1);
             ItemMeta healTokenMeta = healToken.getItemMeta();
             healTokenMeta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Heal Token");
+            healToken.setItemMeta(healTokenMeta);
             e.getEntity().getKiller().getInventory().addItem(healToken);
         }
 
