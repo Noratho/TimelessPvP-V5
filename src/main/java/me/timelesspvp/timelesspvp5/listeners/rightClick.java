@@ -1,7 +1,6 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
-import me.timelesspvp.timelesspvp5.TimelessPvP5;
-import me.timelesspvp.timelesspvp5.healToken;
+import me.timelesspvp.timelesspvp5.outsourceMethods;
 import me.timelesspvp.timelesspvp5.kits.k02ScoutRC;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -9,7 +8,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 
 public class rightClick implements Listener {
 
@@ -29,7 +27,7 @@ public class rightClick implements Listener {
             switch (ChatColor.stripColor(e.getItem().getItemMeta().getDisplayName())) {
 
                 case "Heal Token" -> {
-                    healToken.useHealToken(p);
+                    outsourceMethods.useHealToken(p);
                     e.getItem().setAmount(e.getItem().getAmount() - 1);
                 }
 

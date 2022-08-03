@@ -1,8 +1,6 @@
 package me.timelesspvp.timelesspvp5.commands;
 
-import it.unimi.dsi.fastutil.Pair;
-import me.timelesspvp.timelesspvp5.TimelessPvP5;
-import me.timelesspvp.timelesspvp5.leaveExecute;
+import me.timelesspvp.timelesspvp5.outsourceMethods;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -26,7 +24,7 @@ public class leaveArena implements CommandExecutor {
         if (sender instanceof Player) {
             Player p = (Player) sender;
 
-            leaveExecute.leaveArena(p);
+            outsourceMethods.leaveProtocol(p);
         }
 
         return true;

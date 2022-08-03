@@ -1,6 +1,19 @@
-Food: 'test'
-Amount: 10
-Price: 10.20
-Ingredients:
-  - 'cinamon'
-  - 'sugar'
+spawns:
+  lobby:
+    px: 0.0
+    py: 0.0
+    pz: 0.0
+    yaw: 0.0
+    pitch: 0.0
+  archer:
+    px: 0.0
+    py: 0.0
+    pz: 0.0
+    yaw: 0.0
+    pitch: 0.0
+  scout:
+    px: 0.0
+    py: 0.0
+    pz: 0.0
+    yaw: 0.0
+    pitch: 0.0
