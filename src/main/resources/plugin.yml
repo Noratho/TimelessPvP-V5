@@ -11,3 +11,6 @@ commands:
   leave:
     description: Leave the arena
     usage: /<command>
+  reloadConfig:
+    description: reload configs
+    usage: /<command>
