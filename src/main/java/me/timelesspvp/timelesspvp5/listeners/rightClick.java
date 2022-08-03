@@ -29,9 +29,7 @@ public class rightClick implements Listener {
             switch (ChatColor.stripColor(e.getItem().getItemMeta().getDisplayName())) {
 
                 case "Heal Token" -> {
-                    if (TimelessPvP5.getInvs().containsKey(p.getUniqueId())) {
-                        healToken.useHealToken(p);
-                    }
+                    healToken.useHealToken(p);
                     e.getItem().setAmount(e.getItem().getAmount() - 1);
                 }
 

@@ -3,9 +3,11 @@ package me.timelesspvp.timelesspvp5;
 import it.unimi.dsi.fastutil.Pair;
 import me.timelesspvp.timelesspvp5.commands.leaveArena;
 import me.timelesspvp.timelesspvp5.commands.openKitMenu;
+import me.timelesspvp.timelesspvp5.commands.reloadConfig;
 import me.timelesspvp.timelesspvp5.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -36,6 +38,7 @@ public final class TimelessPvP5 extends JavaPlugin {
         // Plugin startup logic
         Bukkit.getLogger().info("plugin start up. This gon be good");
         plugin = this;
+        FileConfiguration config = this.getConfig();
 
 
         // Listeners
@@ -48,28 +51,14 @@ public final class TimelessPvP5 extends JavaPlugin {
         // Commands
         getCommand("kits").setExecutor(new openKitMenu());
         getCommand("leave").setExecutor(new leaveArena());
-
+        getCommand("reloadConfig").setExecutor(new reloadConfig());
 
 
         // Configs
 
-        // Default
-        getConfig().options().copyDefaults();
-        saveDefaultConfig();
-
-        // archer
-        getConfig().addDefault("spawns.archer.x", 0);
-        getConfig().addDefault("spawns.archer.y", 0);
-        getConfig().addDefault("spawns.archer.z", 0);
-        getConfig().addDefault("spawns.archer.yaw", 0); // left right
-        getConfig().addDefault("spawns.archer.pitch", 0); //up down
-
-        // scout
-        getConfig().addDefault("spawns.scout.x", 0);
-        getConfig().addDefault("spawns.scout.y", 0);
-        getConfig().addDefault("spawns.scout.z", 0);
-        getConfig().addDefault("spawns.scout.yaw", 0); // left right
-        getConfig().addDefault("spawns.scout.pitch", 0); //up down
+            // Default
+        config.options().copyDefaults(true);
+        this.saveConfig();
 
     }
 
