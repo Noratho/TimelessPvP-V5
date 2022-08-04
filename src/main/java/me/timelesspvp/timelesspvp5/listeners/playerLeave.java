@@ -11,8 +11,6 @@ public class playerLeave implements Listener {
 
     @EventHandler
     public void onPLayerLeave(PlayerQuitEvent e) {
-
-        Bukkit.getLogger().info("playerLeft");
         outsourceMethods.leaveProtocol(e.getPlayer());
     }
 }

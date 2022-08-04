@@ -14,3 +14,6 @@ commands:
   reloadConfig:
     description: reload configs
     usage: /<command>
+  lobby:
+    description: go to lobby
+    usage: /<command>

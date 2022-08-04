@@ -21,7 +21,6 @@ public class openKitMenu implements CommandExecutor {
                              @NotNull String label,
                              @NotNull String[] args) {
 
-        Bukkit.getLogger().info("Kits ran");
 
         if (sender instanceof Player) {
             Player p = (Player) sender;
@@ -36,9 +35,7 @@ public class openKitMenu implements CommandExecutor {
                     ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
                             ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Archer" +
                             ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
-
             archerSel.setItemMeta(archerMeta);
-            inv.addItem(archerSel);
 
 
             // Scout
@@ -48,10 +45,10 @@ public class openKitMenu implements CommandExecutor {
                     ChatColor.BLACK + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
                             ChatColor.WHITE + "" + ChatColor.BOLD + "Scout" +
                             ChatColor.BLACK + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
-
             scoutSel.setItemMeta(scoutMeta);
-            inv.addItem(scoutSel);
 
+
+            inv.addItem(archerSel, scoutSel);
 
             p.openInventory(inv);
 

@@ -26,6 +26,10 @@ public class rightClick implements Listener {
 
             switch (ChatColor.stripColor(e.getItem().getItemMeta().getDisplayName())) {
 
+                case "zzzPick a Classzzz" -> {
+                    outsourceMethods.openMenu(p);
+                }
+
                 case "Heal Token" -> {
                     outsourceMethods.useHealToken(p);
                     e.getItem().setAmount(e.getItem().getAmount() - 1);

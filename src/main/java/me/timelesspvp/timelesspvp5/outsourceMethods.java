@@ -1,24 +1,84 @@
 package me.timelesspvp.timelesspvp5;
 
 import it.unimi.dsi.fastutil.Pair;
-import org.bukkit.Color;
-import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
-import org.bukkit.Particle;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitScheduler;
 
 public class outsourceMethods {
 
+
+    public static void openMenu(Player p) {
+        Inventory inv = Bukkit.createInventory(p,
+                27, ChatColor.DARK_AQUA + "Choose your kit");
+
+
+        // Archer
+        ItemStack archerSel = new ItemStack(Material.ARROW, 1);
+        ItemMeta archerMeta = archerSel.getItemMeta();
+        archerMeta.setDisplayName(
+                ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
+                        ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Archer" +
+                        ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
+        archerSel.setItemMeta(archerMeta);
+
+
+        // Scout
+        ItemStack scoutSel = new ItemStack(Material.BLACK_STAINED_GLASS, 1);
+        ItemMeta scoutMeta = scoutSel.getItemMeta();
+        scoutMeta.setDisplayName(
+                ChatColor.BLACK + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
+                        ChatColor.WHITE + "" + ChatColor.BOLD + "Scout" +
+                        ChatColor.BLACK + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
+        scoutSel.setItemMeta(scoutMeta);
+
+
+        inv.addItem(archerSel, scoutSel);
+
+        p.openInventory(inv);
+    }
+
+
     public static void lobbyProtocol(Player p) {
 
+        PersistentDataContainer data = p.getPersistentDataContainer();
+
+        p.getInventory().clear();
+        helperMethods.removeEffects(p);
+        Location loc = helperMethods.getLocationConfig("lobby");
+
+        // Delay teleport by 1 tick otherwise will spawn at spawnpoint
+        BukkitScheduler scheduler = TimelessPvP5.getPlugin().getServer().getScheduler();
+        scheduler.runTaskLater(TimelessPvP5.getPlugin(), new Runnable() {
+            @Override
+            public void run() {
+                p.teleport(loc);
+            }
+        }, 1L);
+
+        data.set(new NamespacedKey(TimelessPvP5.getPlugin(),
+                "state"), PersistentDataType.STRING, "lobby");
+
+        ItemStack kitOpen = new ItemStack(Material.CAKE, 1);
+        ItemMeta kitOpenMeta = kitOpen.getItemMeta();
+        kitOpenMeta.setDisplayName(
+                ChatColor.BLACK + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
+                        ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Pick a Class" +
+                        ChatColor.BLACK + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
+        kitOpen.setItemMeta(kitOpenMeta);
+        p.getInventory().addItem(kitOpen);
     }
 
 
     public static void leaveProtocol(Player p) {
+
         // if the player has data in the inv map
         if (TimelessPvP5.getInvs().containsKey(p.getUniqueId())) {
             Pair<Inventory, Location> data = TimelessPvP5.getInvs().get(p.getUniqueId());
@@ -37,6 +97,9 @@ public class outsourceMethods {
         } else {
             p.sendMessage("You are not in the arena");
         }
+        PersistentDataContainer pData = p.getPersistentDataContainer();
+        pData.set(new NamespacedKey(TimelessPvP5.getPlugin(),
+                "state"), PersistentDataType.STRING, "out");
     }
 
 

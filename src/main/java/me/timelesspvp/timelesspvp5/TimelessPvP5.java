@@ -2,7 +2,7 @@ package me.timelesspvp.timelesspvp5;
 
 import it.unimi.dsi.fastutil.Pair;
 import me.timelesspvp.timelesspvp5.commands.leaveArena;
-import me.timelesspvp.timelesspvp5.commands.openKitMenu;
+import me.timelesspvp.timelesspvp5.commands.lobbyCommand;
 import me.timelesspvp.timelesspvp5.commands.reloadConfig;
 import me.timelesspvp.timelesspvp5.listeners.*;
 import org.bukkit.Bukkit;
@@ -47,11 +47,13 @@ public final class TimelessPvP5 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new projectileHit(),this);
         getServer().getPluginManager().registerEvents(new playerLeave(),this);
         getServer().getPluginManager().registerEvents(new playerKillPlayer(), this);
+        getServer().getPluginManager().registerEvents(new playerRespawn(), this);
+        getServer().getPluginManager().registerEvents(new playerLeave(), this);
 
         // Commands
-        getCommand("kits").setExecutor(new openKitMenu());
         getCommand("leave").setExecutor(new leaveArena());
         getCommand("reloadConfig").setExecutor(new reloadConfig());
+        getCommand("lobby").setExecutor(new lobbyCommand());
 
 
         // Configs

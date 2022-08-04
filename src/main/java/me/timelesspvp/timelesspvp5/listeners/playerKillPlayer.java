@@ -1,5 +1,6 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
+import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -15,6 +16,9 @@ public class playerKillPlayer implements Listener {
     public void onKillPlayer(PlayerDeathEvent e) {
 
         if (e.getEntity().getKiller() != null) {
+
+//            if (TimelessPvP5.getInvs().containsKey(p.getUniqueId())) {}
+
             ItemStack healToken = new ItemStack(Material.RED_DYE, 1);
             ItemMeta healTokenMeta = healToken.getItemMeta();
             healTokenMeta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Heal Token");
