@@ -11,6 +11,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitScheduler;
+import org.javatuples.Triplet;
 
 public class outsourceMethods {
 
@@ -52,6 +53,7 @@ public class outsourceMethods {
 
         p.getInventory().clear();
         helperMethods.removeEffects(p);
+        p.setGameMode(GameMode.ADVENTURE);
         Location loc = helperMethods.getLocationConfig("lobby");
 
         // Delay teleport by 1 tick otherwise will spawn at spawnpoint
@@ -81,13 +83,14 @@ public class outsourceMethods {
 
         // if the player has data in the inv map
         if (TimelessPvP5.getInvs().containsKey(p.getUniqueId())) {
-            Pair<Inventory, Location> data = TimelessPvP5.getInvs().get(p.getUniqueId());
+            Triplet<Inventory, Location, GameMode> data = TimelessPvP5.getInvs().get(p.getUniqueId());
 
             for (PotionEffect effect : p.getActivePotionEffects())
                 p.removePotionEffect(effect.getType());
 
-            p.getInventory().setContents(data.first().getContents());
-            p.teleport(data.second());
+            p.getInventory().setContents(data.getValue0().getContents());
+            p.teleport(data.getValue1());
+            p.setGameMode(data.getValue2());
             TimelessPvP5.removeEntryInvs(p.getUniqueId());
 
             PersistentDataContainer pData = p.getPersistentDataContainer();

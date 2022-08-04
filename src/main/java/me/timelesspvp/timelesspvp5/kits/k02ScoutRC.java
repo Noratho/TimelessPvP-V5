@@ -24,7 +24,7 @@ public class k02ScoutRC {
 
         Arrow bullet = p.getWorld().spawnArrow(
                 spawnLoc, p.getEyeLocation().getDirection(),
-                0.6f, 0);
+                1f, 0);
 
         PersistentDataContainer data = bullet.getPersistentDataContainer();
 

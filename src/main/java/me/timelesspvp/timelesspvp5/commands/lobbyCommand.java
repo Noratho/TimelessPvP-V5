@@ -42,7 +42,7 @@ public class lobbyCommand implements CommandExecutor {
             // Store inv and prev location data
             Inventory storage = Bukkit.createInventory(p, InventoryType.PLAYER);
             storage.setContents(p.getInventory().getContents());
-            TimelessPvP5.addEntryInvs(p.getUniqueId(), storage, p.getLocation());
+            TimelessPvP5.addEntryInvs(p.getUniqueId(), storage, p.getLocation(), p.getGameMode());
         }
 
         outsourceMethods.lobbyProtocol(p);
