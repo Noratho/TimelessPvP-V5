@@ -1,18 +1,33 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
+import me.timelesspvp.timelesspvp5.outsourceMethods;
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-public class playerJoin implements Listener {
 
+public class playerLeaveOrJoin implements Listener {
+
+
+    // Player DC
+    @EventHandler
+    public void onPLayerLeave(PlayerQuitEvent e) {
+        outsourceMethods.leaveProtocol(e.getPlayer());
+        Bukkit.getLogger().info("leef");
+    }
+
+    // Player Connect
     @EventHandler
     public static void onJoin(PlayerJoinEvent e) {
+
+        Bukkit.getLogger().info("jon");
 
         Player p = e.getPlayer();
 

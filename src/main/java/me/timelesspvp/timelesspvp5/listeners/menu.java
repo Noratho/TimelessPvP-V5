@@ -46,6 +46,7 @@ public class menu implements Listener {
                     p.teleport(loc);
 
                     k01Archer.giveKit(p);
+                    outsourceMethods.giveOldCombat(p);
                 }
 
                 // Scout
@@ -58,6 +59,7 @@ public class menu implements Listener {
                     p.teleport(loc);
 
                     k02Scout.giveKit(p);
+                    outsourceMethods.giveOldCombat(p);
                 }
                 default -> {
                     haveMatched = false;

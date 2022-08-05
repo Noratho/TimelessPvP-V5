@@ -32,7 +32,8 @@ public class k02ScoutRC {
                 "k02ScoutBullet"), PersistentDataType.INTEGER, damage);
 
 
-        bullet.setVelocity(p.getLocation().getDirection().multiply(0.8));
+        bullet.setVelocity(p.getLocation().getDirection().multiply(1));
+        bullet.setShooter(p);
 
         new BukkitRunnable() {
             @Override

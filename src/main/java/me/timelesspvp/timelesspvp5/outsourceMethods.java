@@ -2,6 +2,8 @@ package me.timelesspvp.timelesspvp5;
 
 import it.unimi.dsi.fastutil.Pair;
 import org.bukkit.*;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -12,6 +14,8 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.javatuples.Triplet;
+
+import static java.lang.reflect.Array.getDouble;
 
 public class outsourceMethods {
 
@@ -103,6 +107,8 @@ public class outsourceMethods {
         PersistentDataContainer pData = p.getPersistentDataContainer();
         pData.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "state"), PersistentDataType.STRING, "out");
+
+        removeOldCombat(p);
     }
 
 
@@ -121,5 +127,14 @@ public class outsourceMethods {
         p.getWorld().spawnParticle(Particle.REDSTONE,
                 loc,250,0.3, 0.5, 0.3, options);
 
+    }
+
+    public static void giveOldCombat(Player p) {
+        p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(16);
+    }
+
+
+    public static void removeOldCombat(Player p) {
+        p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(4);
     }
 }

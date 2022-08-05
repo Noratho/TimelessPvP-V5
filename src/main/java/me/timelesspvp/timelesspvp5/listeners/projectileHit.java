@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -35,7 +36,7 @@ public class projectileHit implements Listener {
                         "k02ScoutBullet"), PersistentDataType.INTEGER);
                 // if entity is living give dmg
                 if (ent instanceof LivingEntity) {
-                    ((LivingEntity) ent).damage(damage);
+                    ((LivingEntity) ent).damage(damage, (Player) pro.getShooter());
                 }
 
                 e.setCancelled(true);
