@@ -20,14 +20,11 @@ public class playerLeaveOrJoin implements Listener {
     @EventHandler
     public void onPLayerLeave(PlayerQuitEvent e) {
         outsourceMethods.leaveProtocol(e.getPlayer());
-        Bukkit.getLogger().info("leef");
     }
 
     // Player Connect
     @EventHandler
     public static void onJoin(PlayerJoinEvent e) {
-
-        Bukkit.getLogger().info("jon");
 
         Player p = e.getPlayer();
 

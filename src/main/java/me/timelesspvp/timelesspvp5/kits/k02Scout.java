@@ -1,8 +1,10 @@
 package me.timelesspvp.timelesspvp5.kits;
 
+import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.block.Skull;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -12,6 +14,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -35,18 +39,12 @@ public class k02Scout {
         holyMackerel.setItemMeta(holyMackerelMeta);
 
             // pocket pistol
-        ItemStack pocketPistol = new ItemStack(Material.STICK, 48);
-        ItemMeta pocketPistolMeta = pocketPistol.getItemMeta();
-        pocketPistolMeta.setDisplayName(
-                ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
-                        ChatColor.GOLD + "" + ChatColor.BOLD + "Pretty Boy's Pocket Pistol" +
-                        ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
-        pocketPistol.setItemMeta(pocketPistolMeta);
+        ItemStack pocketPistol = getPocketPistol(48);
 
             // reload
         ItemStack reload = new ItemStack(Material.FEATHER, 1);
         ItemMeta reloadMeta = reload.getItemMeta();
-        pocketPistolMeta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "Pretty Boy's Pocket Pistol" );
+        reloadMeta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "Pretty Boy's Pocket Pistol" );
         reload.setItemMeta(reloadMeta);
 
         p.getInventory().addItem(holyMackerel, pocketPistol);
@@ -80,6 +78,25 @@ public class k02Scout {
         p.addPotionEffect(pSpeed);
 
 
+        // Persistent data
+        PersistentDataContainer data = p.getPersistentDataContainer();
+        data.set(new NamespacedKey(TimelessPvP5.getPlugin(),
+                "k02ScoutStacks"), PersistentDataType.INTEGER, 0);
+
+
         // Spawn Location
+    }
+
+
+    public static ItemStack getPocketPistol(int amount) {
+        ItemStack pocketPistol = new ItemStack(Material.STICK, amount);
+        ItemMeta pocketPistolMeta = pocketPistol.getItemMeta();
+        pocketPistolMeta.setDisplayName(
+                ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
+                        ChatColor.GOLD + "" + ChatColor.BOLD + "Pretty Boy's Pocket Pistol" +
+                        ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
+        pocketPistol.setItemMeta(pocketPistolMeta);
+
+        return pocketPistol;
     }
 }

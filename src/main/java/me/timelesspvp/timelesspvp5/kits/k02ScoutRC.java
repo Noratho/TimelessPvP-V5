@@ -5,6 +5,7 @@ import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Particle;
+import org.bukkit.entity.AbstractArrow;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -34,9 +35,10 @@ public class k02ScoutRC {
 
         bullet.setVelocity(p.getLocation().getDirection().multiply(1));
         bullet.setShooter(p);
+        bullet.setPickupStatus(AbstractArrow.PickupStatus.DISALLOWED);
 
+        // Give particle trail
         new BukkitRunnable() {
-            @Override
             public void run() {
                 if (!bullet.isDead()) {
                     Particle.DustOptions options =
@@ -49,5 +51,20 @@ public class k02ScoutRC {
 
             }
         }.runTaskTimer(TimelessPvP5.getPlugin(), 0L, 1L);
+
+        // De-spawn after 8 seconds
+        BukkitRunnable runnable = new BukkitRunnable() {
+            public void run() {
+                bullet.remove();
+            }
+        };
+        runnable.runTaskLater(TimelessPvP5.getPlugin(), 8 * 20L);
+
+
+    }
+
+
+    public static void reloadPistol(Player p) {
+
     }
 }
