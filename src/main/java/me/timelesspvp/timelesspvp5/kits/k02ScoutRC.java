@@ -66,5 +66,7 @@ public class k02ScoutRC {
 
     public static void reloadPistol(Player p) {
 
+
+
     }
 }

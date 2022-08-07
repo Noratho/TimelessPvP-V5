@@ -1,9 +1,7 @@
 package me.timelesspvp.timelesspvp5;
 
-import it.unimi.dsi.fastutil.Pair;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -11,11 +9,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitScheduler;
-import org.javatuples.Triplet;
-
-import static java.lang.reflect.Array.getDouble;
 
 public class outsourceMethods {
 
@@ -86,16 +80,16 @@ public class outsourceMethods {
     public static void leaveProtocol(Player p) {
 
         // if the player has data in the inv map
-        if (TimelessPvP5.getInvs().containsKey(p.getUniqueId())) {
-            Triplet<Inventory, Location, GameMode> data = TimelessPvP5.getInvs().get(p.getUniqueId());
+        if (TimelessPvP5.getPlrData().containsKey(p.getUniqueId())) {
+            playerData data = TimelessPvP5.getPlrData().get(p.getUniqueId());
 
             for (PotionEffect effect : p.getActivePotionEffects())
                 p.removePotionEffect(effect.getType());
 
-            p.getInventory().setContents(data.getValue0().getContents());
-            p.teleport(data.getValue1());
-            p.setGameMode(data.getValue2());
-            TimelessPvP5.removeEntryInvs(p.getUniqueId());
+            p.getInventory().setContents(data.getInv().getContents());
+            p.teleport(data.getLoc());
+            p.setGameMode(data.getGm());
+            TimelessPvP5.removePlrDataEntry(p.getUniqueId());
 
             PersistentDataContainer pData = p.getPersistentDataContainer();
             pData.set(new NamespacedKey(TimelessPvP5.getPlugin(),

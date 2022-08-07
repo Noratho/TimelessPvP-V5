@@ -4,7 +4,6 @@ import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import me.timelesspvp.timelesspvp5.outsourceMethods;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,9 +13,7 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.potion.PotionEffect;
 import org.jetbrains.annotations.NotNull;
-import me.timelesspvp.timelesspvp5.helperMethods;
 
 public class lobbyCommand implements CommandExecutor {
 
@@ -42,7 +39,7 @@ public class lobbyCommand implements CommandExecutor {
             // Store inv and prev location data
             Inventory storage = Bukkit.createInventory(p, InventoryType.PLAYER);
             storage.setContents(p.getInventory().getContents());
-            TimelessPvP5.addEntryInvs(p.getUniqueId(), storage, p.getLocation(), p.getGameMode());
+            TimelessPvP5.addPlrDataEntry(p.getUniqueId(), storage, p.getLocation(), p.getGameMode());
         }
 
         outsourceMethods.lobbyProtocol(p);

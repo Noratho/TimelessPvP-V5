@@ -26,19 +26,19 @@ import java.util.UUID;
 public final class TimelessPvP5 extends JavaPlugin {
 
     private static TimelessPvP5 plugin;
-    private static Map<UUID, Triplet<Inventory, Location, GameMode>> invs =
-            new HashMap<UUID, Triplet<Inventory, Location, GameMode>>();
+    private static Map<UUID, playerData> plrData =
+            new HashMap<UUID, playerData>();
 
-    public static Map<UUID, Triplet<Inventory, Location, GameMode>> getInvs() {
-        return invs;
+
+    public static Map<UUID, playerData> getPlrData() {
+        return plrData;
     }
-
-    public static void addEntryInvs(UUID uuid, Inventory inv, Location loc, GameMode gm) {
-        TimelessPvP5.invs.put(uuid, Triplet.with(inv, loc, gm));
+    public static void addPlrDataEntry(UUID uuid, Inventory inv, Location loc, GameMode gm) {
+        playerData data = new playerData(uuid, inv, loc, gm);
+        TimelessPvP5.plrData.put(uuid, data);
     }
-
-    public static void removeEntryInvs(UUID uuid) {
-        TimelessPvP5.invs.remove(uuid);
+    public static void removePlrDataEntry(UUID uuid) {
+        TimelessPvP5.plrData.remove(uuid);
     }
 
     @Override

@@ -55,8 +55,6 @@ public class menu implements Listener {
                     p.getInventory().clear();
                     helperMethods.removeEffects(p);
                     p.closeInventory();
-                    Location loc = helperMethods.getLocationConfig("scout");
-                    p.teleport(loc);
 
                     k02Scout.giveKit(p);
                     outsourceMethods.giveOldCombat(p);

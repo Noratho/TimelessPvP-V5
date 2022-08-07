@@ -1,16 +1,11 @@
 package me.timelesspvp.timelesspvp5.kits;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
-import org.bukkit.block.Skull;
+import me.timelesspvp.timelesspvp5.helperMethods;
+import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -19,8 +14,6 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.UUID;
-
 public class k02Scout {
 
     public static void giveKit(Player p) {
@@ -28,24 +21,13 @@ public class k02Scout {
         // Items
 
             //holy mackerel
-        ItemStack holyMackerel = new ItemStack(Material.DIAMOND_SWORD, 1);
-        ItemMeta holyMackerelMeta = holyMackerel.getItemMeta();
-        holyMackerelMeta.setUnbreakable(true);
-        holyMackerelMeta.addEnchant(Enchantment.DAMAGE_ALL, 4, true);
-        holyMackerelMeta.setDisplayName(
-                ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
-                        ChatColor.GOLD + "" + ChatColor.BOLD + "Holy Mackerel" +
-                        ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
-        holyMackerel.setItemMeta(holyMackerelMeta);
+        ItemStack holyMackerel = getHolyMack();
 
             // pocket pistol
         ItemStack pocketPistol = getPocketPistol(48);
 
             // reload
-        ItemStack reload = new ItemStack(Material.FEATHER, 1);
-        ItemMeta reloadMeta = reload.getItemMeta();
-        reloadMeta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "Pretty Boy's Pocket Pistol" );
-        reload.setItemMeta(reloadMeta);
+        ItemStack reload = getReload();
 
         p.getInventory().addItem(holyMackerel, pocketPistol);
 
@@ -85,6 +67,8 @@ public class k02Scout {
 
 
         // Spawn Location
+        Location loc = helperMethods.getLocationConfig("scout");
+        p.teleport(loc);
     }
 
 
@@ -98,5 +82,28 @@ public class k02Scout {
         pocketPistol.setItemMeta(pocketPistolMeta);
 
         return pocketPistol;
+    }
+
+
+    public static ItemStack getHolyMack() {
+        ItemStack holyMackerel = new ItemStack(Material.DIAMOND_SWORD, 1);
+        ItemMeta holyMackerelMeta = holyMackerel.getItemMeta();
+        holyMackerelMeta.setUnbreakable(true);
+        holyMackerelMeta.addEnchant(Enchantment.DAMAGE_ALL, 4, true);
+        holyMackerelMeta.setDisplayName(
+                ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
+                        ChatColor.GOLD + "" + ChatColor.BOLD + "Holy Mackerel" +
+                        ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
+        holyMackerel.setItemMeta(holyMackerelMeta);
+        return holyMackerel;
+    }
+
+
+    public static ItemStack getReload() {
+        ItemStack reload = new ItemStack(Material.FEATHER, 1);
+        ItemMeta reloadMeta = reload.getItemMeta();
+        reloadMeta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "Reload" );
+        reload.setItemMeta(reloadMeta);
+        return reload;
     }
 }
