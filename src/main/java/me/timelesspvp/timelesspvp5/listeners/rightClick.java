@@ -1,7 +1,7 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.outsourceMethods;
-import me.timelesspvp.timelesspvp5.kits.k02ScoutRC;
+import me.timelesspvp.timelesspvp5.kits.k02ScoutMethods;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,12 +36,12 @@ public class rightClick implements Listener {
                 }
 
                 case "zzzPretty Boy's Pocket Pistolzzz" -> {
-                    k02ScoutRC.shootPocketPistol(p);
+                    k02ScoutMethods.shootPocketPistol(p);
                     e.getItem().setAmount(e.getItem().getAmount() - 1);
                 }
 
                 case "Reload" -> {
-                    k02ScoutRC.reloadPistol(p);
+                    k02ScoutMethods.reloadPistol(p);
 
                 }
 

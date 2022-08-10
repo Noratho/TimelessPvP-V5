@@ -1,6 +1,7 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,7 +20,9 @@ public class itemDrop implements Listener {
         if (!perData.get(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "state"), PersistentDataType.STRING).equals("in")) {
             e.setCancelled(true);
+            Bukkit.getLogger().info("drop succeed");
         }
+        Bukkit.getLogger().info("drop finished");
 
     }
 

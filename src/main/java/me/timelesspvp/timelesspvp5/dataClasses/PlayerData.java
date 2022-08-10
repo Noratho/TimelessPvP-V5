@@ -1,5 +1,6 @@
 package me.timelesspvp.timelesspvp5.dataClasses;
 
+import me.timelesspvp.timelesspvp5.sequences.ReloadSequence;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;

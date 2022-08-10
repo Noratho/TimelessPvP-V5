@@ -20,7 +20,7 @@ import org.javatuples.Pair;
 
 import java.util.ArrayList;
 
-public class k02Scout {
+public class k02ScoutData {
 
     public static void giveKit(Player p) {
 
@@ -136,7 +136,7 @@ public class k02Scout {
         };
 
         currentDataChunk = new RunnableData(sounds, emptyEffects, emptyItems);
-        rData.add(new Pair<>(20L, currentDataChunk));
+        rData.add(new Pair<>(5L, currentDataChunk));
 
 
         // Delay 30-90 ticks
@@ -145,7 +145,7 @@ public class k02Scout {
         };
 
         currentDataChunk = new RunnableData(sounds, emptyEffects, emptyItems);
-        for (long delay = 25L; delay <= 97L; delay += 4)
+        for (long delay = 9L; delay <= 97L; delay += 4)
             rData.add(new Pair<>(delay, currentDataChunk));
 
 

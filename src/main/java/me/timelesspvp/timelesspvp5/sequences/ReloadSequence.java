@@ -1,6 +1,7 @@
-package me.timelesspvp.timelesspvp5.dataClasses;
+package me.timelesspvp.timelesspvp5.sequences;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
+import me.timelesspvp.timelesspvp5.dataClasses.RunnableData;
 import me.timelesspvp.timelesspvp5.tasks.abstractTask;
 import me.timelesspvp.timelesspvp5.tasks.reloadTask;
 import org.bukkit.entity.Player;
@@ -24,7 +25,6 @@ public class ReloadSequence {
     public void generateSequence() {
 
         for (Pair<Long, RunnableData> pair : rData) {
-
             reloadTask reloadRunnable = new reloadTask(p, pair.getValue0(), pair.getValue1());
             runnables.add(reloadRunnable);
         }

@@ -1,8 +1,7 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
-import me.timelesspvp.timelesspvp5.kits.k02Scout;
-import org.bukkit.Bukkit;
+import me.timelesspvp.timelesspvp5.kits.k02ScoutData;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
@@ -65,7 +64,7 @@ public class projectileHit implements Listener {
                         case 4 -> {
                             pData.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                                     "k02ScoutStacks"), PersistentDataType.INTEGER, 0);
-                            p.getInventory().addItem(k02Scout.getPocketPistol(1));
+                            p.getInventory().addItem(k02ScoutData.getPocketPistol(1));
                             p.playSound(p.getLocation(), Sound.BLOCK_PISTON_EXTEND, 0.5f, 0.707107f);
                         }
                     }

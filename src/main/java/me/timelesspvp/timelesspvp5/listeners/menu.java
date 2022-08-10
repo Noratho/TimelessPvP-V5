@@ -1,8 +1,8 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
-import me.timelesspvp.timelesspvp5.kits.k01Archer;
-import me.timelesspvp.timelesspvp5.kits.k02Scout;
+import me.timelesspvp.timelesspvp5.kits.k01ArcherData;
+import me.timelesspvp.timelesspvp5.kits.k02ScoutData;
 import me.timelesspvp.timelesspvp5.helperMethods;
 import me.timelesspvp.timelesspvp5.outsourceMethods;
 import org.bukkit.Bukkit;
@@ -45,7 +45,7 @@ public class menu implements Listener {
                     Location loc = helperMethods.getLocationConfig("archer");
                     p.teleport(loc);
 
-                    k01Archer.giveKit(p);
+                    k01ArcherData.giveKit(p);
                     outsourceMethods.giveOldCombat(p);
                 }
 
@@ -56,7 +56,7 @@ public class menu implements Listener {
                     helperMethods.removeEffects(p);
                     p.closeInventory();
 
-                    k02Scout.giveKit(p);
+                    k02ScoutData.giveKit(p);
                     outsourceMethods.giveOldCombat(p);
                 }
                 default -> {
