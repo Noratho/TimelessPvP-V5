@@ -3,6 +3,7 @@ package me.timelesspvp.timelesspvp5;
 import me.timelesspvp.timelesspvp5.commands.leaveArena;
 import me.timelesspvp.timelesspvp5.commands.lobbyCommand;
 import me.timelesspvp.timelesspvp5.commands.reloadConfig;
+import me.timelesspvp.timelesspvp5.dataClasses.PlayerData;
 import me.timelesspvp.timelesspvp5.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -16,7 +17,6 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
-import org.javatuples.Triplet;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,15 +26,15 @@ import java.util.UUID;
 public final class TimelessPvP5 extends JavaPlugin {
 
     private static TimelessPvP5 plugin;
-    private static Map<UUID, playerData> plrData =
-            new HashMap<UUID, playerData>();
+    private static Map<UUID, PlayerData> plrData =
+            new HashMap<UUID, PlayerData>();
 
 
-    public static Map<UUID, playerData> getPlrData() {
+    public static Map<UUID, PlayerData> getPlrData() {
         return plrData;
     }
     public static void addPlrDataEntry(UUID uuid, Inventory inv, Location loc, GameMode gm) {
-        playerData data = new playerData(uuid, inv, loc, gm);
+        PlayerData data = new PlayerData(uuid, inv, loc, gm);
         TimelessPvP5.plrData.put(uuid, data);
     }
     public static void removePlrDataEntry(UUID uuid) {
@@ -60,6 +60,7 @@ public final class TimelessPvP5 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new playerLeaveOrJoin(), this);
         getServer().getPluginManager().registerEvents(new healthRegen(), this);
         getServer().getPluginManager().registerEvents(new entityHit(), this);
+        getServer().getPluginManager().registerEvents(new itemDrop(), this);
 
         // Commands
         getCommand("leave").setExecutor(new leaveArena());
