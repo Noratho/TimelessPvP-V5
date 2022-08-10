@@ -1,5 +1,6 @@
 package me.timelesspvp.timelesspvp5;
 
+import me.timelesspvp.timelesspvp5.dataClasses.PlayerData;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
@@ -47,6 +48,13 @@ public class outsourceMethods {
 
     public static void lobbyProtocol(Player p) {
 
+        // Disable active reloads
+        PlayerData pData = TimelessPvP5.getPlrData().get(p.getUniqueId());
+        if (pData.getActiveReloads() != null){
+            pData.cancelActiveReloads();
+        }
+
+
         PersistentDataContainer data = p.getPersistentDataContainer();
 
         p.getInventory().clear();
@@ -81,25 +89,30 @@ public class outsourceMethods {
 
         // if the player has data in the inv map
         if (TimelessPvP5.getPlrData().containsKey(p.getUniqueId())) {
-            playerData data = TimelessPvP5.getPlrData().get(p.getUniqueId());
+            PlayerData pData = TimelessPvP5.getPlrData().get(p.getUniqueId());
 
+            // Remove all effects
             for (PotionEffect effect : p.getActivePotionEffects())
                 p.removePotionEffect(effect.getType());
 
-            p.getInventory().setContents(data.getInv().getContents());
-            p.teleport(data.getLoc());
-            p.setGameMode(data.getGm());
+            // restore player inv, loc, gm, and disable all reload sequences
+            p.getInventory().setContents(pData.getInv().getContents());
+            p.teleport(pData.getLoc());
+            p.setGameMode(pData.getGm());
+            if (pData.getActiveReloads() != null){
+                pData.cancelActiveReloads();
+            }
             TimelessPvP5.removePlrDataEntry(p.getUniqueId());
 
-            PersistentDataContainer pData = p.getPersistentDataContainer();
-            pData.set(new NamespacedKey(TimelessPvP5.getPlugin(),
+            PersistentDataContainer perData = p.getPersistentDataContainer();
+            perData.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                     "state"), PersistentDataType.STRING, "out");
 
         } else {
-            p.sendMessage("You are not in the arena");
+            p.sendMessage("You are not in the arena/lobby");
         }
-        PersistentDataContainer pData = p.getPersistentDataContainer();
-        pData.set(new NamespacedKey(TimelessPvP5.getPlugin(),
+        PersistentDataContainer perData = p.getPersistentDataContainer();
+        perData.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "state"), PersistentDataType.STRING, "out");
 
         removeOldCombat(p);

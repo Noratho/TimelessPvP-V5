@@ -41,6 +41,7 @@ public class rightClick implements Listener {
                 }
 
                 case "Reload" -> {
+                    k02ScoutRC.reloadPistol(p);
 
                 }
 

@@ -1,16 +1,23 @@
 package me.timelesspvp.timelesspvp5.kits;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
-import org.bukkit.Color;
-import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
-import org.bukkit.Particle;
+import me.timelesspvp.timelesspvp5.dataClasses.PlayerData;
+import me.timelesspvp.timelesspvp5.dataClasses.RunnableData;
+import me.timelesspvp.timelesspvp5.dataClasses.ReloadSequence;
+import me.timelesspvp.timelesspvp5.dataClasses.SoundData;
+import org.bukkit.*;
 import org.bukkit.entity.AbstractArrow;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.javatuples.Pair;
+
+import java.util.ArrayList;
 
 public class k02ScoutRC {
 
@@ -65,8 +72,20 @@ public class k02ScoutRC {
 
 
     public static void reloadPistol(Player p) {
+        p.getInventory().clear();
+        ItemStack skull = k02Scout.getSkull();
+        p.getInventory().setItem(EquipmentSlot.HEAD, skull);
 
+        // Set up reload sequence
+        ArrayList<Pair<Long, RunnableData>> rData = k02Scout.getScoutReloadSequence();
+        ReloadSequence sequence = new ReloadSequence(p, rData);
+        sequence.generateSequence();
+        sequence.runSequence();
+
+        PlayerData pData = TimelessPvP5.getPlrData().get(p.getUniqueId());
+        pData.setActiveReload(sequence);
 
 
     }
+
 }

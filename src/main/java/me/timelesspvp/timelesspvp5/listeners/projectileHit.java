@@ -23,8 +23,8 @@ public class projectileHit implements Listener {
         Projectile pro = e.getEntity();
 
         if (e.getHitEntity() != null) {
-            Entity ent = e.getHitEntity();
 
+            Entity ent = e.getHitEntity();
             PersistentDataContainer proData = pro.getPersistentDataContainer();
 
             // If hit by scout pocket pistol bullet
@@ -44,6 +44,7 @@ public class projectileHit implements Listener {
                     int stacks = pData.get(new NamespacedKey(TimelessPvP5.getPlugin(),
                             "k02ScoutStacks"), PersistentDataType.INTEGER) + 1;
 
+                    // Scout combo hits
                     switch (stacks) {
 
                         case 1 -> {

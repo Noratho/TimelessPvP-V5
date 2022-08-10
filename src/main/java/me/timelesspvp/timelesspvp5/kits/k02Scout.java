@@ -1,6 +1,9 @@
 package me.timelesspvp.timelesspvp5.kits;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
+import me.timelesspvp.timelesspvp5.dataClasses.ItemWSlot;
+import me.timelesspvp.timelesspvp5.dataClasses.RunnableData;
+import me.timelesspvp.timelesspvp5.dataClasses.SoundData;
 import me.timelesspvp.timelesspvp5.helperMethods;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
@@ -13,6 +16,9 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.javatuples.Pair;
+
+import java.util.ArrayList;
 
 public class k02Scout {
 
@@ -29,18 +35,13 @@ public class k02Scout {
             // reload
         ItemStack reload = getReload();
 
-        p.getInventory().addItem(holyMackerel, pocketPistol);
+        p.getInventory().addItem(holyMackerel, pocketPistol, reload);
 
 
         //Armor
 
             // Skull
-        ItemStack nateSkull = new ItemStack(Material.PLAYER_HEAD);
-        SkullMeta nateSkullMeta = (SkullMeta) nateSkull.getItemMeta();
-//        nateSkullMeta.setOwningPlayer(Bukkit.getPlayer(
-//                UUID.fromString("0090ef17-4c4b-461f-96c7-60ea0fd0b9cf")));
-        nateSkullMeta.setOwner("SmittyMon");
-        nateSkull.setItemMeta(nateSkullMeta);
+        ItemStack nateSkull = getSkull();
 
         p.getInventory().setItem(EquipmentSlot.HEAD, nateSkull);
 
@@ -105,5 +106,69 @@ public class k02Scout {
         reloadMeta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "Reload" );
         reload.setItemMeta(reloadMeta);
         return reload;
+    }
+
+    public static ItemStack getSkull() {
+        ItemStack nateSkull = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta nateSkullMeta = (SkullMeta) nateSkull.getItemMeta();
+        nateSkullMeta.setOwner("SmittyMon");
+        nateSkull.setItemMeta(nateSkullMeta);
+        return nateSkull;
+    }
+
+    public static ArrayList<Pair<Long, RunnableData>> getScoutReloadSequence() {
+        ArrayList<Pair<Long, RunnableData>> rData = new ArrayList<>();
+
+        SoundData[] emptySound = {};
+        PotionEffect[] emptyEffects = {};
+        ItemWSlot[] emptyItems = {};
+
+        SoundData[] sounds;
+        PotionEffect[] effects;
+        ItemWSlot[] items;
+
+        RunnableData currentDataChunk;
+
+
+        // Delay 20 ticks
+        sounds = new SoundData[]{
+                new SoundData(Sound.BLOCK_PISTON_CONTRACT, 1, 1)
+        };
+
+        currentDataChunk = new RunnableData(sounds, emptyEffects, emptyItems);
+        rData.add(new Pair<>(20L, currentDataChunk));
+
+
+        // Delay 30-90 ticks
+        sounds = new SoundData[] {
+                new SoundData(Sound.ENTITY_ITEM_PICKUP, 1, 1)
+        };
+
+        currentDataChunk = new RunnableData(sounds, emptyEffects, emptyItems);
+        for (long delay = 25L; delay <= 97L; delay += 4)
+            rData.add(new Pair<>(delay, currentDataChunk));
+
+
+        // Delay 94 ticks
+        sounds = new SoundData[] {
+                new SoundData(Sound.BLOCK_PISTON_EXTEND, 1, 1)
+        };
+
+        currentDataChunk = new RunnableData(sounds, emptyEffects, emptyItems);
+        rData.add(new Pair<>(99L, currentDataChunk));
+
+
+        //Delay 97
+        items = new ItemWSlot[] {
+                new ItemWSlot(getHolyMack(), -1),
+                new ItemWSlot(getPocketPistol(48), -1),
+                new ItemWSlot(getReload(), -1)
+        };
+
+        currentDataChunk = new RunnableData(emptySound, emptyEffects, items);
+        rData.add(new Pair<>(100L, currentDataChunk));
+
+
+        return rData;
     }
 }
