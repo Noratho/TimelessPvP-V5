@@ -1,6 +1,7 @@
 package me.timelesspvp.timelesspvp5;
 
 import me.timelesspvp.timelesspvp5.dataClasses.PlayerData;
+import me.timelesspvp.timelesspvp5.kits.k07WeegeeData;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
@@ -40,7 +41,9 @@ public class outsourceMethods {
         scoutSel.setItemMeta(scoutMeta);
 
 
-        inv.addItem(archerSel, scoutSel);
+        ItemStack weegeeSel = k07WeegeeData.getSkull();
+
+        inv.addItem(archerSel, scoutSel, weegeeSel);
 
         p.openInventory(inv);
     }

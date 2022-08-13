@@ -17,3 +17,9 @@ spawns:
     pz: 0.0
     yaw: 0.0
     pitch: 0.0
+  weegee:
+    px: 0.0
+    py: 0.0
+    pz: 0.0
+    yaw: 0.0
+    pitch: 0.0

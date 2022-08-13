@@ -18,6 +18,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.javatuples.Pair;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class k02ScoutData {
@@ -26,13 +27,8 @@ public class k02ScoutData {
 
         // Items
 
-            //holy mackerel
         ItemStack holyMackerel = getHolyMack();
-
-            // pocket pistol
         ItemStack pocketPistol = getPocketPistol(48);
-
-            // reload
         ItemStack reload = getReload();
 
         p.getInventory().addItem(holyMackerel, pocketPistol, reload);
@@ -110,9 +106,27 @@ public class k02ScoutData {
 
     public static ItemStack getSkull() {
         ItemStack nateSkull = new ItemStack(Material.PLAYER_HEAD);
-        SkullMeta nateSkullMeta = (SkullMeta) nateSkull.getItemMeta();
-        nateSkullMeta.setOwner("SmittyMon");
-        nateSkull.setItemMeta(nateSkullMeta);
+        Bukkit.getUnsafe().modifyItemStack(nateSkull,
+    "{SkullOwner: {Name: \"SmittyMon\", " +
+            "Properties: {textures: [{Value: \"ewogICJ0aW1lc3RhbXAiIDogMTY1" +
+            "OTc3Mzc2MDIwMiwKICAicHJvZmlsZUlkIiA6ICIwMDkwZWYxNzRjNGI0NjFmOTZjNzYw" +
+            "ZWEwZmQwYjljZiIsCiAgInByb2ZpbGVOYW1lIiA6ICJTbWl0dHlNb24iLAogICJzaW" +
+            "duYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTi" +
+            "IgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3" +
+            "RleHR1cmUvNDhkOTM4YzRlZmExOTVmZGJmNTNhMzAzYWJhNmIwMjMwZDRiMjk5MmYyYz" +
+            "UwNzVhMTI0MWNkNzQ4ZDM0MGNiZSIKICAgIH0KICB9Cn0=\", Signature: \"Miue4" +
+            "Rp1tAEQNuGrRmRJOZb1SfgXINLTzzo8P/pOq39JjVo2QzGRwznwRbLJi+yudgSVu2/LV" +
+            "dhzE3Z5vMDZu2EB3+/ZmcDgU0bVnQsasIUjprhGpE4hGcWgB1sTHzN+nY8hBhZ7Dx56t" +
+            "wTRWoRvGouppTaxT6sOWKvv8AVX7xj7U9yvb91XhT/fWUm1xDejyWJ3epCAvFCVqQlDm" +
+            "bWko+5EBhe3hN//SoCLNq3LkLhVsJRyeymKioyz9UgkY32VpgGrmUkyY0EXkFQgkd1VV" +
+            "3BBbCLxYF6r+Fzi9fOSp6v0AtvKbwBSVcn2qtAvpEO1ncjEHPqoqyQa2zqWoME8TlL5x" +
+            "gOGhOXY1/KHQ4jnSdI8oCauqUN+lH4q2/Qi4okSP7p3p2FB4W/rq2ZoG/ne+tJHF241R" +
+            "RiZE+mAt85EZEMni1viYxlFa5somwaFyjaLvUWD4TkWXKmCYBbVMH1XE/p8jeot2VS8e" +
+            "Qi6MWf5WpytbHHHQ5sHB/HmC8JOCuQjWwMwsQOlHZvAsGNdT2qv1ER6A6PUxiloWlxjh" +
+            "xSuTy9jQx0giFbjDfnNG06In2F9DjxrMZzbPaTZz/ByaL4IyjyFDxTuGfK0lGGper+NO" +
+            "gb3O94qHHctuAYIc7sMCFGD2ZChwH+lX18t/dMGGX7Jv293dlZTZgV2Nzm463NyW/I=\"" +
+            "}]}}}"
+        );
         return nateSkull;
     }
 

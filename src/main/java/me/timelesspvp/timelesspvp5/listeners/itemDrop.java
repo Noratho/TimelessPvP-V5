@@ -18,11 +18,9 @@ public class itemDrop implements Listener {
         Player p = e.getPlayer();
         PersistentDataContainer perData = p.getPersistentDataContainer();
         if (!perData.get(new NamespacedKey(TimelessPvP5.getPlugin(),
-                "state"), PersistentDataType.STRING).equals("in")) {
+                "state"), PersistentDataType.STRING).equals("out")) {
             e.setCancelled(true);
-            Bukkit.getLogger().info("drop succeed");
         }
-        Bukkit.getLogger().info("drop finished");
 
     }
 

@@ -4,6 +4,7 @@ import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import me.timelesspvp.timelesspvp5.kits.k01ArcherData;
 import me.timelesspvp.timelesspvp5.kits.k02ScoutData;
 import me.timelesspvp.timelesspvp5.helperMethods;
+import me.timelesspvp.timelesspvp5.kits.k07WeegeeData;
 import me.timelesspvp.timelesspvp5.outsourceMethods;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -57,6 +58,16 @@ public class menu implements Listener {
                     p.closeInventory();
 
                     k02ScoutData.giveKit(p);
+                    outsourceMethods.giveOldCombat(p);
+                }
+                // Weegee
+                case PLAYER_HEAD -> {
+
+                    p.getInventory().clear();
+                    helperMethods.removeEffects(p);
+                    p.closeInventory();
+
+                    k07WeegeeData.giveKit(p);
                     outsourceMethods.giveOldCombat(p);
                 }
                 default -> {

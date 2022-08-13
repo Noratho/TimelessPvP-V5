@@ -1,28 +1,44 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
+import me.timelesspvp.timelesspvp5.TimelessPvP5;
+import me.timelesspvp.timelesspvp5.kits.k07WeegeeMethods;
 import me.timelesspvp.timelesspvp5.outsourceMethods;
 import me.timelesspvp.timelesspvp5.kits.k02ScoutMethods;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 
 public class rightClick implements Listener {
 
     @EventHandler
     public void useItem(PlayerInteractEvent e) {
 
+        Player p = e.getPlayer();
+
+        // If player is not in the game then send don't continue
+        PersistentDataContainer perData = p.getPersistentDataContainer();
+        if (perData.get(new NamespacedKey(TimelessPvP5.getPlugin(),
+                "state"), PersistentDataType.STRING).equals("out")) {
+            return;
+        }
+
+
         // If a right click
         if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK ) {
 
-            Player p = e.getPlayer();
+
             if (!e.hasItem()) {
                 return;
             }
 
-//        p.sendMessage(ChatColor.stripColor(e.getItem().getItemMeta().getDisplayName()));
+
 
             switch (ChatColor.stripColor(e.getItem().getItemMeta().getDisplayName())) {
 
@@ -43,6 +59,11 @@ public class rightClick implements Listener {
                 case "Reload" -> {
                     k02ScoutMethods.reloadPistol(p);
 
+                }
+
+                case "zzz1-UPzzz" -> {
+                    k07WeegeeMethods.useOneUp(p);
+                    e.getItem().setAmount(e.getItem().getAmount() - 1);
                 }
 
             }
