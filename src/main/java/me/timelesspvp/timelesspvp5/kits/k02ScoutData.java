@@ -86,7 +86,7 @@ public class k02ScoutData {
         ItemStack holyMackerel = new ItemStack(Material.DIAMOND_SWORD, 1);
         ItemMeta holyMackerelMeta = holyMackerel.getItemMeta();
         holyMackerelMeta.setUnbreakable(true);
-        holyMackerelMeta.addEnchant(Enchantment.DAMAGE_ALL, 4, true);
+        holyMackerelMeta.addEnchant(Enchantment.DAMAGE_ALL, 3, true);
         holyMackerelMeta.setDisplayName(
                 ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
                         ChatColor.GOLD + "" + ChatColor.BOLD + "Holy Mackerel" +

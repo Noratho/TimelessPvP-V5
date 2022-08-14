@@ -8,7 +8,7 @@ import org.bukkit.potion.PotionEffect;
 
 public class reloadTask extends abstractTask{
 
-    private RunnableData data;
+    private final RunnableData data;
 
     public reloadTask(Player p, Long delay, RunnableData data) {
         this.p = p;

@@ -1,7 +1,9 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
+import me.timelesspvp.timelesspvp5.dataClasses.SoundData;
 import me.timelesspvp.timelesspvp5.kits.k07WeegeeMethods;
+import me.timelesspvp.timelesspvp5.tasks.soundTask;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -21,6 +23,9 @@ import java.util.UUID;
 import org.javatuples.Pair;
 
 public class playerShift implements Listener {
+
+    static final String weegeeToken = "weegeeShift";
+    static final Long weegeeCD = 2L;
 
     @EventHandler
     public void onShift(PlayerToggleSneakEvent e) {
@@ -43,21 +48,20 @@ public class playerShift implements Listener {
 
         switch (ChatColor.stripColor(item.getItemMeta().getDisplayName())) {
             case "Poltergust" -> {
-                if (TimelessPvP5.cooldownEntryExists(p.getUniqueId(), "weegeeShift")) {
+                if (TimelessPvP5.cooldownEntryExists(p.getUniqueId(), weegeeToken)) {
 
                     if (TimelessPvP5.getCooldownEntry(
-                            p.getUniqueId(), "weegeeShift") > System.currentTimeMillis()) {
-                        p.playSound(p.getLocation(), Sound.BLOCK_PISTON_CONTRACT, 1 ,1);
+                            p.getUniqueId(), weegeeToken) > System.currentTimeMillis()) {
+                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1 ,1);
                         return;
                     }
                 }
-                TimelessPvP5.addCooldownEntry(p.getUniqueId(), "weegeeShift",
-                        System.currentTimeMillis() + (3 * 1000));
 
+                TimelessPvP5.addCooldownEntry(p.getUniqueId(), weegeeToken,
+                        System.currentTimeMillis() + (weegeeCD * 1000));
 
-                    // to notify when cooldown finished
-                    // create bukkit task and delay based on cd length when run
                 k07WeegeeMethods.weegeeShift(p);
+
             }
         }
     }
