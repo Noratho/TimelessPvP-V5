@@ -40,7 +40,7 @@ public class outsourceMethods {
                         ChatColor.BLACK + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
         scoutSel.setItemMeta(scoutMeta);
 
-
+        // Weegee
         ItemStack weegeeSel = k07WeegeeData.getSkull();
 
         inv.addItem(archerSel, scoutSel, weegeeSel);
