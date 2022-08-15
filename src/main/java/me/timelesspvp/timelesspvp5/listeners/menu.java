@@ -1,11 +1,8 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
-import me.timelesspvp.timelesspvp5.kits.k01ArcherData;
-import me.timelesspvp.timelesspvp5.kits.k02ScoutData;
+import me.timelesspvp.timelesspvp5.kits.*;
 import me.timelesspvp.timelesspvp5.helperMethods;
-import me.timelesspvp.timelesspvp5.kits.k07WeegeeData;
-import me.timelesspvp.timelesspvp5.kits.k08PirateData;
 import me.timelesspvp.timelesspvp5.outsourceMethods;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -61,6 +58,17 @@ public class menu implements Listener {
                     k02ScoutData.giveKit(p);
                     outsourceMethods.giveOldCombat(p);
                 }
+                // Melon
+                case GLISTERING_MELON_SLICE -> {
+
+                    p.getInventory().clear();
+                    helperMethods.removeEffects(p);
+                    p.closeInventory();
+
+                    k03MelonData.giveKit(p);
+                    outsourceMethods.giveOldCombat(p);
+                }
+
                 // Weegee
                 case PLAYER_HEAD -> {
 
