@@ -1,7 +1,9 @@
 package me.timelesspvp.timelesspvp5.kits;
 
+import me.timelesspvp.timelesspvp5.helperMethods;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -51,6 +53,8 @@ public class k01ArcherData {
 
 
         // Spawn Location
+        Location loc = helperMethods.getLocationConfig("archer");
+        p.teleport(loc);
 
     }
 
@@ -78,7 +82,6 @@ public class k01ArcherData {
         specialDelivery.setItemMeta(specialDeliveryMeta);
         return specialDelivery;
     }
-
     public static ItemStack getDagger() {
         ItemStack dagger = new ItemStack(Material.STONE_SWORD, 1);
         ItemMeta daggerMeta = dagger.getItemMeta();
@@ -100,7 +103,6 @@ public class k01ArcherData {
         cap.setItemMeta(capMeta);
         return cap;
     }
-
     public static ItemStack getChest() {
         ItemStack chest = new ItemStack(Material.CHAINMAIL_CHESTPLATE, 1);
         ItemMeta chestMeta = chest.getItemMeta();
@@ -108,7 +110,6 @@ public class k01ArcherData {
         chest.setItemMeta(chestMeta);
         return chest;
     }
-
     public static ItemStack getLegs() {
         ItemStack legs = new ItemStack(Material.LEATHER_LEGGINGS, 1);
         LeatherArmorMeta legsMeta = (LeatherArmorMeta) legs.getItemMeta();
@@ -117,7 +118,6 @@ public class k01ArcherData {
         legs.setItemMeta(legsMeta);
         return legs;
     }
-
     public static ItemStack getBoots() {
         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS, 1);
         LeatherArmorMeta bootsMeta = (LeatherArmorMeta) boots.getItemMeta();

@@ -79,7 +79,6 @@ public class k08PirateData {
         cutlass.setItemMeta(cutlassMeta);
         return cutlass;
     }
-
     public static ItemStack getMusket() {
 
         ItemStack musket = new ItemStack(Material.IRON_HORSE_ARMOR, 1);
@@ -93,7 +92,6 @@ public class k08PirateData {
         musket.setItemMeta(musketMeta);
         return musket;
     }
-
     public static ItemStack getBullet() {
 
         ItemStack bullet = new ItemStack(Material.IRON_NUGGET, 1);

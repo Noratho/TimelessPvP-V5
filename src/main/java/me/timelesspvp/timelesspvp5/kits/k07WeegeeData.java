@@ -76,7 +76,6 @@ public class k07WeegeeData {
         poltergust.setItemMeta(poltergustMeta);
         return poltergust;
     }
-
     public static ItemStack get1UP() {
         ItemStack oneUP = new ItemStack(Material.RED_MUSHROOM, 1);
         ItemMeta oneUpMeta = oneUP.getItemMeta();
@@ -124,7 +123,6 @@ public class k07WeegeeData {
 
         return weegeeSkull;
     }
-
     public static ItemStack getChest() {
         ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
         LeatherArmorMeta chestMeta = (LeatherArmorMeta) chest.getItemMeta();
@@ -134,7 +132,6 @@ public class k07WeegeeData {
         chest.setItemMeta(chestMeta);
         return chest;
     }
-
     public static ItemStack getLegs() {
         ItemStack legs = new ItemStack(Material.GOLDEN_LEGGINGS, 1);
         ItemMeta legsMeta = legs.getItemMeta();
@@ -143,7 +140,6 @@ public class k07WeegeeData {
         legs.setItemMeta(legsMeta);
         return legs;
     }
-
     public static ItemStack getBoots() {
         ItemStack boots = new ItemStack(Material.GOLDEN_BOOTS, 1);
         ItemMeta bootsMeta = boots.getItemMeta();

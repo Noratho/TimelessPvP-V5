@@ -52,7 +52,7 @@ public class outsourceMethods {
         }
 
 
-        PersistentDataContainer data = p.getPersistentDataContainer();
+        PersistentDataContainer pNBT = p.getPersistentDataContainer();
 
         p.getInventory().clear();
         helperMethods.removeEffects(p);
@@ -68,7 +68,7 @@ public class outsourceMethods {
             }
         }, 1L);
 
-        data.set(new NamespacedKey(TimelessPvP5.getPlugin(),
+        pNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "state"), PersistentDataType.STRING, "lobby");
 
         ItemStack kitOpen = new ItemStack(Material.CAKE, 1);
@@ -102,18 +102,18 @@ public class outsourceMethods {
             }
             TimelessPvP5.removePlrDataEntry(p.getUniqueId());
 
-            PersistentDataContainer perData = p.getPersistentDataContainer();
-            perData.set(new NamespacedKey(TimelessPvP5.getPlugin(),
+            PersistentDataContainer pNBT = p.getPersistentDataContainer();
+            pNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                     "state"), PersistentDataType.STRING, "out");
 
         } else {
             p.sendMessage("You are not in the arena/lobby");
         }
-        PersistentDataContainer perData = p.getPersistentDataContainer();
-        perData.set(new NamespacedKey(TimelessPvP5.getPlugin(),
+        PersistentDataContainer pNBT = p.getPersistentDataContainer();
+        pNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "state"), PersistentDataType.STRING, "out");
 
-        removeOldCombat(p);
+        helperMethods.removeOldCombat(p);
     }
 
 
@@ -132,12 +132,5 @@ public class outsourceMethods {
         p.getWorld().spawnParticle(Particle.REDSTONE,
                 loc,250,0.3, 0.5, 0.3, options);
 
-    }
-
-    public static void giveOldCombat(Player p) {
-        p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(16);
-    }
-    public static void removeOldCombat(Player p) {
-        p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(4);
     }
 }

@@ -22,16 +22,14 @@ public class k02ScoutMethods {
     public static void shootPocketPistol(Player p) {
 
         Location spawnLoc = p.getEyeLocation();
-
         spawnLoc.setY(spawnLoc.getY() - 0.05);
 
         Arrow bullet = p.getWorld().spawnArrow(
                 spawnLoc, p.getEyeLocation().getDirection(),
                 1f, 0);
 
-        PersistentDataContainer data = bullet.getPersistentDataContainer();
-
-        data.set(new NamespacedKey(TimelessPvP5.getPlugin(),
+        PersistentDataContainer bulletNBT = bullet.getPersistentDataContainer();
+        bulletNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "projKitOrig"), PersistentDataType.STRING, "scout");
 
 

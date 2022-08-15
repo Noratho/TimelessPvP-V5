@@ -90,7 +90,6 @@ public class k02ScoutData {
 
         return pocketPistol;
     }
-
     public static ItemStack getHolyMack() {
         ItemStack holyMackerel = new ItemStack(Material.DIAMOND_SWORD, 1);
         ItemMeta holyMackerelMeta = holyMackerel.getItemMeta();
@@ -103,7 +102,6 @@ public class k02ScoutData {
         holyMackerel.setItemMeta(holyMackerelMeta);
         return holyMackerel;
     }
-
     public static ItemStack getReload() {
         ItemStack reload = new ItemStack(Material.FEATHER, 1);
         ItemMeta reloadMeta = reload.getItemMeta();

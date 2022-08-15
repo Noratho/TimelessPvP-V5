@@ -41,11 +41,8 @@ public class menu implements Listener {
                     p.getInventory().clear();
                     helperMethods.removeEffects(p);
                     p.closeInventory();
-                    Location loc = helperMethods.getLocationConfig("archer");
-                    p.teleport(loc);
 
                     k01ArcherData.giveKit(p);
-                    outsourceMethods.giveOldCombat(p);
                 }
 
                 // Scout
@@ -56,7 +53,6 @@ public class menu implements Listener {
                     p.closeInventory();
 
                     k02ScoutData.giveKit(p);
-                    outsourceMethods.giveOldCombat(p);
                 }
                 // Melon
                 case GLISTERING_MELON_SLICE -> {
@@ -66,7 +62,6 @@ public class menu implements Listener {
                     p.closeInventory();
 
                     k03MelonData.giveKit(p);
-                    outsourceMethods.giveOldCombat(p);
                 }
 
                 // Weegee
@@ -77,7 +72,6 @@ public class menu implements Listener {
                     p.closeInventory();
 
                     k07WeegeeData.giveKit(p);
-                    outsourceMethods.giveOldCombat(p);
                 }
                 // Pirate
                 case FLINT -> {
@@ -87,7 +81,7 @@ public class menu implements Listener {
                     p.closeInventory();
 
                     k08PirateData.giveKit(p);
-                    outsourceMethods.giveOldCombat(p);
+
                 }
 
                 default -> {
@@ -98,6 +92,7 @@ public class menu implements Listener {
             if (haveMatched) {
                 data.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                         "state"), PersistentDataType.STRING, "in");
+                helperMethods.giveOldCombat(p);
             }
 
             Bukkit.getLogger().info(String.valueOf(e.getRawSlot()));
