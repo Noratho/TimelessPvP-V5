@@ -72,7 +72,6 @@ public class k03MelonData {
         stickOfPower.setItemMeta(stickOfPowerMeta);
         return stickOfPower;
     }
-
     public static ItemStack getDerpAirlines() {
         ItemStack derpAirlines = new ItemStack(Material.MELON_SEEDS, 1);
         ItemMeta derpAirlinesMeta = derpAirlines.getItemMeta();
@@ -109,7 +108,6 @@ public class k03MelonData {
         );
         return melonSkull;
     }
-
     public static ItemStack getChest() {
         ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
         LeatherArmorMeta chestMeta = (LeatherArmorMeta) chest.getItemMeta();
@@ -119,7 +117,6 @@ public class k03MelonData {
         chest.setItemMeta(chestMeta);
         return chest;
     }
-
     public static ItemStack getLegs() {
         ItemStack legs = new ItemStack(Material.LEATHER_LEGGINGS, 1);
         LeatherArmorMeta legsMeta = (LeatherArmorMeta) legs.getItemMeta();
@@ -129,7 +126,6 @@ public class k03MelonData {
         legs.setItemMeta(legsMeta);
         return legs;
     }
-
     public static ItemStack getBoots() {
         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS, 1);
         LeatherArmorMeta bootsMeta = (LeatherArmorMeta) boots.getItemMeta();
