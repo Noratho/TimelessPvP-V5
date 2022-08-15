@@ -22,7 +22,7 @@ public class k01ArcherData {
         ItemStack specialDelivery = new ItemStack(Material.BOW, 1);
         ItemMeta specialDeliveryMeta = specialDelivery.getItemMeta();
         specialDeliveryMeta.setUnbreakable(true);
-        specialDeliveryMeta.addEnchant(Enchantment.ARROW_DAMAGE, 7, true);
+        specialDeliveryMeta.addEnchant(Enchantment.ARROW_DAMAGE, 6, true);
         specialDeliveryMeta.addEnchant(Enchantment.ARROW_INFINITE, 1, true);
         specialDeliveryMeta.setDisplayName(
                 ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +

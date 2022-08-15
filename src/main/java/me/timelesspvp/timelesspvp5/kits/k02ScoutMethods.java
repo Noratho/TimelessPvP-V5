@@ -70,6 +70,8 @@ public class k02ScoutMethods {
 
         // get heal token amounts
         for (ItemStack items : p.getInventory().getContents()) {
+            p.sendMessage(String.valueOf(items));
+            if (items == null){ continue; }
             String name = ChatColor.stripColor(items.getItemMeta().getDisplayName());
             if (name.equals("Heal Token")) {
                 healTokens = items;

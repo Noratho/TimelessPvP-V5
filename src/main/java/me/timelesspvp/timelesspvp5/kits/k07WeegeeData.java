@@ -69,7 +69,7 @@ public class k07WeegeeData {
         ItemStack poltergust = new ItemStack(Material.FISHING_ROD, 1);
         ItemMeta poltergustMeta = poltergust.getItemMeta();
         poltergustMeta.setUnbreakable(true);
-        poltergustMeta.addEnchant(Enchantment.DAMAGE_ALL, 6, true);
+        poltergustMeta.addEnchant(Enchantment.DAMAGE_ALL, 8, true);
         poltergustMeta.setDisplayName(
                         ChatColor.BLUE + "" + ChatColor.BOLD + "Poltergust");
         poltergust.setItemMeta(poltergustMeta);
