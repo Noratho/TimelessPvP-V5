@@ -6,13 +6,42 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class k08PirateData {
 
     public static void giveKit(Player p) {
 
+        // item
+        ItemStack cutlass = getCutlass();
+        ItemStack musket = getMusket();
+        ItemStack bullet = getBullet();
+        p.getInventory().addItem(cutlass, musket, bullet);
+
+
+        // Armor
+        ItemStack cap = getCap();
+        ItemStack chest = getChest();
+        ItemStack legs = getLegs();
+        ItemStack boots = getBoots();
+
+        p.getInventory().setItem(EquipmentSlot.HEAD, cap);
+        p.getInventory().setItem(EquipmentSlot.CHEST, chest);
+        p.getInventory().setItem(EquipmentSlot.LEGS, legs);
+        p.getInventory().setItem(EquipmentSlot.FEET, boots);
+
+
+        // potion
+        PotionEffect pSat = new PotionEffect(
+                PotionEffectType.SATURATION,
+                10000000, 0,
+                false, false);
+
+        p.addPotionEffect(pSat);
 
         // loc
         Location loc = helperMethods.getLocationConfig("pirate");
@@ -22,7 +51,7 @@ public class k08PirateData {
 
     public static ItemStack getCutlass() {
 
-        ItemStack cutlass = new ItemStack(Material.IRON_NUGGET, 1);
+        ItemStack cutlass = new ItemStack(Material.IRON_SWORD, 1);
         ItemMeta cutlassMeta = cutlass.getItemMeta();
         cutlassMeta.setUnbreakable(true);
         cutlassMeta.addEnchant(Enchantment.FIRE_ASPECT, 1, true);
@@ -37,7 +66,7 @@ public class k08PirateData {
 
     public static ItemStack getMusket() {
 
-        ItemStack musket = new ItemStack(Material.IRON_NUGGET, 1);
+        ItemStack musket = new ItemStack(Material.IRON_HORSE_ARMOR, 1);
         ItemMeta musketMeta = musket.getItemMeta();
         musketMeta.setUnbreakable(true);
         musketMeta.addEnchant(Enchantment.LUCK, 10, true);
@@ -69,7 +98,6 @@ public class k08PirateData {
         cap.setItemMeta(capMeta);
         return cap;
     }
-
     public static ItemStack getChest() {
         ItemStack chest = new ItemStack(Material.CHAINMAIL_CHESTPLATE, 1);
         ItemMeta chestMeta = chest.getItemMeta();
@@ -78,7 +106,6 @@ public class k08PirateData {
         chest.setItemMeta(chestMeta);
         return chest;
     }
-
     public static ItemStack getLegs() {
         ItemStack legs = new ItemStack(Material.CHAINMAIL_LEGGINGS, 1);
         ItemMeta legsMeta = legs.getItemMeta();
@@ -87,7 +114,6 @@ public class k08PirateData {
         legs.setItemMeta(legsMeta);
         return legs;
     }
-
     public static ItemStack getBoots() {
         ItemStack boots = new ItemStack(Material.CHAINMAIL_BOOTS, 1);
         ItemMeta bootsMeta = boots.getItemMeta();

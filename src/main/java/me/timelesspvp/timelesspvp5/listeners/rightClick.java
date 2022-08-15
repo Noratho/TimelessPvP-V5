@@ -2,16 +2,20 @@ package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import me.timelesspvp.timelesspvp5.kits.k07WeegeeMethods;
+import me.timelesspvp.timelesspvp5.kits.k08PirateData;
+import me.timelesspvp.timelesspvp5.kits.k08PirateMethods;
 import me.timelesspvp.timelesspvp5.outsourceMethods;
 import me.timelesspvp.timelesspvp5.kits.k02ScoutMethods;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
@@ -64,6 +68,22 @@ public class rightClick implements Listener {
                 case "zzz1-UPzzz" -> {
                     k07WeegeeMethods.useOneUp(p);
                     e.getItem().setAmount(e.getItem().getAmount() - 1);
+                }
+
+                case "zzzMusketzzz" -> {
+                    if (p.getInventory().contains(k08PirateData.getBullet())) {
+                        k08PirateMethods.shootMusket(p);
+                        for (ItemStack items : p.getInventory().getContents()) {
+                            String name = ChatColor.stripColor(items.getItemMeta().getDisplayName());
+                            if (name.equals("zzzBulletzzz")) {
+                                items.setAmount(items.getAmount() - 1);
+                                break;
+                            }
+                        }
+                    } else {
+                        p.playSound(p.getLocation(),
+                                Sound.BLOCK_DISPENSER_FAIL, 0.9f, 1.5f);
+                    }
                 }
 
             }

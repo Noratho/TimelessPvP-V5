@@ -21,9 +21,6 @@ public class k02ScoutMethods {
 
     public static void shootPocketPistol(Player p) {
 
-        // damage calculated in half hearts
-        int damage = 7;
-
         Location spawnLoc = p.getEyeLocation();
 
         spawnLoc.setY(spawnLoc.getY() - 0.05);
@@ -35,7 +32,7 @@ public class k02ScoutMethods {
         PersistentDataContainer data = bullet.getPersistentDataContainer();
 
         data.set(new NamespacedKey(TimelessPvP5.getPlugin(),
-                "k02ScoutBullet"), PersistentDataType.INTEGER, damage);
+                "projKitOrig"), PersistentDataType.STRING, "scout");
 
 
         bullet.setVelocity(p.getLocation().getDirection().multiply(1));
@@ -64,8 +61,6 @@ public class k02ScoutMethods {
             }
         };
         runnable.runTaskLater(TimelessPvP5.getPlugin(), 8 * 20L);
-
-
     }
 
 
@@ -82,8 +77,6 @@ public class k02ScoutMethods {
 
         PlayerData pData = TimelessPvP5.getPlrData().get(p.getUniqueId());
         pData.setActiveReload(sequence);
-
-
     }
 
 }

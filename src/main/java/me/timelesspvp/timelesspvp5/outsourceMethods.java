@@ -43,7 +43,17 @@ public class outsourceMethods {
         // Weegee
         ItemStack weegeeSel = k07WeegeeData.getSkull();
 
-        inv.addItem(archerSel, scoutSel, weegeeSel);
+
+        // Pirate
+        ItemStack pirateSel = new ItemStack(Material.FLINT, 1);
+        ItemMeta pirateSelMeta = pirateSel.getItemMeta();
+        pirateSelMeta.setDisplayName(
+                ChatColor.RED + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
+                        ChatColor.GRAY + "" + ChatColor.BOLD + "Pirate" +
+                        ChatColor.RED + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
+        pirateSel.setItemMeta(pirateSelMeta);
+
+        inv.addItem(archerSel, scoutSel, weegeeSel, pirateSel);
 
         p.openInventory(inv);
     }
@@ -90,7 +100,7 @@ public class outsourceMethods {
 
     public static void leaveProtocol(Player p) {
 
-        // if the player has data in the inv map
+        // if the player has data in the map
         if (TimelessPvP5.getPlrData().containsKey(p.getUniqueId())) {
             PlayerData pData = TimelessPvP5.getPlrData().get(p.getUniqueId());
 
@@ -102,6 +112,7 @@ public class outsourceMethods {
             p.getInventory().setContents(pData.getInv().getContents());
             p.teleport(pData.getLoc());
             p.setGameMode(pData.getGm());
+            // disable all reloads
             if (pData.getActiveReloads() != null){
                 pData.cancelActiveReloads();
             }
@@ -142,8 +153,6 @@ public class outsourceMethods {
     public static void giveOldCombat(Player p) {
         p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(16);
     }
-
-
     public static void removeOldCombat(Player p) {
         p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(4);
     }
