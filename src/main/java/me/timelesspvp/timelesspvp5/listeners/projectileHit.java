@@ -14,6 +14,8 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.util.Objects;
+
 public class projectileHit implements Listener {
 
     private final int scoutDmg = 7;
@@ -22,33 +24,39 @@ public class projectileHit implements Listener {
     @EventHandler
     public void projectileHits(ProjectileHitEvent e) {
 
-        Projectile pro = e.getEntity();
+        Projectile proj = e.getEntity();
 
         if (e.getHitEntity() == null) { return; }
-        if (!(pro.getShooter() instanceof Player)){ return; }
+        if (!(proj.getShooter() instanceof Player)){ return; }
 
-        Player p = (Player) pro.getShooter();
-        Entity ent = e.getHitEntity();
-        PersistentDataContainer perData = p.getPersistentDataContainer();
-        PersistentDataContainer proData = pro.getPersistentDataContainer();
+        Player shooter = (Player) proj.getShooter();
+        Entity victim = e.getHitEntity();
+        PersistentDataContainer shooterNBT = shooter.getPersistentDataContainer();
+        PersistentDataContainer victimNBT = victim.getPersistentDataContainer();
+        PersistentDataContainer projNBT = proj.getPersistentDataContainer();
 
-        if (!(ent instanceof LivingEntity)) { return; }
+        if (!(victim instanceof LivingEntity)) { return; }
         // check if its a projectile shot by a kit
-        if (!proData.has(new NamespacedKey(TimelessPvP5.getPlugin(),
+        if (!projNBT.has(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "projKitOrig"), PersistentDataType.STRING)) { return; }
 
 
-        String kit = proData.get(new NamespacedKey(TimelessPvP5.getPlugin(),
+        String kit = projNBT.get(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "projKitOrig"), PersistentDataType.STRING);
 
         boolean haveMatched = true;
-        switch (kit) {
+        switch (Objects.requireNonNull(kit)) {
             case "scout" -> {
-                ((LivingEntity) ent).damage(scoutDmg, p);
-                scoutStacks(p, perData);
+                ((LivingEntity) victim).damage(scoutDmg, shooter);
+                scoutStacks(shooter, shooterNBT);
+            }
+            case "melon" -> {
+                // mark enemy hit
+                victimNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
+                        "melonMarked"), PersistentDataType.BYTE, (byte) 1);
             }
             case "pirate" -> {
-                ((LivingEntity) ent).damage(pirateDmg, p);
+                ((LivingEntity) victim).damage(pirateDmg, shooter);
             }
             default -> {
                 haveMatched = false;
@@ -56,7 +64,7 @@ public class projectileHit implements Listener {
         }
         if (haveMatched) {
             e.setCancelled(true);
-            pro.remove();
+            proj.remove();
         }
     }
 

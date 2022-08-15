@@ -2,11 +2,8 @@ package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import me.timelesspvp.timelesspvp5.dataClasses.PlayerData;
-import me.timelesspvp.timelesspvp5.kits.k07WeegeeMethods;
-import me.timelesspvp.timelesspvp5.kits.k08PirateData;
-import me.timelesspvp.timelesspvp5.kits.k08PirateMethods;
+import me.timelesspvp.timelesspvp5.kits.*;
 import me.timelesspvp.timelesspvp5.outsourceMethods;
-import me.timelesspvp.timelesspvp5.kits.k02ScoutMethods;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -64,6 +61,10 @@ public class rightClick implements Listener {
                 case "Reload" -> {
                     k02ScoutMethods.reloadPistol(p);
 
+                }
+
+                case "Stick_of_Power" -> {
+                    k03MelonMethods.shootEgg(p);
                 }
 
                 case "zzz1-UPzzz" -> {
