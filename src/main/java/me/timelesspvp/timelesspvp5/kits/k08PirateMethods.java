@@ -35,8 +35,9 @@ public class k08PirateMethods {
         musketBall.setVelocity(p.getLocation().getDirection().multiply(3));
         musketBall.setShooter(p);
         musketBall.setPickupStatus(AbstractArrow.PickupStatus.DISALLOWED);
-//        p.spawnParticle();
+        p.spawnParticle(Particle.CAMPFIRE_SIGNAL_SMOKE, p.getEyeLocation(), 10);
         p.playSound(p.getLocation(), Sound.ENTITY_LIGHTNING_BOLT_IMPACT, 1, 1);
+        reloadPistol(p);
 
         // De-spawn after 8 seconds
         BukkitRunnable runnable = new BukkitRunnable() {
@@ -50,12 +51,9 @@ public class k08PirateMethods {
 
 
     public static void reloadPistol(Player p) {
-        p.getInventory().clear();
-        ItemStack skull = k02ScoutData.getSkull();
-        p.getInventory().setItem(EquipmentSlot.HEAD, skull);
 
         // Set up reload sequence
-        ArrayList<Pair<Long, RunnableData>> rData = k02ScoutData.getScoutReloadSequence();
+        ArrayList<Pair<Long, RunnableData>> rData = k08PirateData.getReloadSequence();
         ReloadSequence sequence = new ReloadSequence(p, rData);
         sequence.generateSequence();
         sequence.runSequence();

@@ -1,9 +1,13 @@
 package me.timelesspvp.timelesspvp5.kits;
 
+import me.timelesspvp.timelesspvp5.dataClasses.ItemWSlot;
+import me.timelesspvp.timelesspvp5.dataClasses.RunnableData;
+import me.timelesspvp.timelesspvp5.dataClasses.SoundData;
 import me.timelesspvp.timelesspvp5.helperMethods;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
@@ -11,6 +15,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.javatuples.Pair;
+
+import java.util.ArrayList;
 
 public class k08PirateData {
 
@@ -121,5 +128,40 @@ public class k08PirateData {
         bootsMeta.setUnbreakable(true);
         boots.setItemMeta(bootsMeta);
         return boots;
+    }
+
+    public static ArrayList<Pair<Long, RunnableData>> getReloadSequence() {
+        ArrayList<Pair<Long, RunnableData>> rData = new ArrayList<>();
+
+        SoundData[] emptySound = {};
+        PotionEffect[] emptyEffects = {};
+        ItemWSlot[] emptyItems = {};
+
+        SoundData[] sounds;
+        PotionEffect[] effects;
+        ItemWSlot[] items;
+
+        RunnableData currentDataChunk;
+
+        // Delay 100 ticks
+        sounds = new SoundData[]{
+                new SoundData(Sound.BLOCK_PISTON_CONTRACT, 1, 1)
+        };
+
+        currentDataChunk = new RunnableData(sounds, emptyEffects, emptyItems);
+        rData.add(new Pair<>(100L, currentDataChunk));
+
+        //Delay 105
+        items = new ItemWSlot[] {
+                new ItemWSlot(getBullet(), -1)
+        };
+        sounds = new SoundData[]{
+                new SoundData(Sound.BLOCK_PISTON_EXTEND, 1, 1)
+        };
+
+        currentDataChunk = new RunnableData(sounds, emptyEffects, items);
+        rData.add(new Pair<>(105L, currentDataChunk));
+
+        return rData;
     }
 }

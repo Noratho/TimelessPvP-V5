@@ -130,7 +130,7 @@ public class k02ScoutData {
         return nateSkull;
     }
 
-    public static ArrayList<Pair<Long, RunnableData>> getScoutReloadSequence() {
+    public static ArrayList<Pair<Long, RunnableData>> getReloadSequence() {
         ArrayList<Pair<Long, RunnableData>> rData = new ArrayList<>();
 
         SoundData[] emptySound = {};

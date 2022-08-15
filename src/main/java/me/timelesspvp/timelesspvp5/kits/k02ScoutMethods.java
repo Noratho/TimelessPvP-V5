@@ -65,12 +65,27 @@ public class k02ScoutMethods {
 
 
     public static void reloadPistol(Player p) {
+
+        ItemStack healTokens = null;
+
+        // get heal token amounts
+        for (ItemStack items : p.getInventory().getContents()) {
+            String name = ChatColor.stripColor(items.getItemMeta().getDisplayName());
+            if (name.equals("Heal Token")) {
+                healTokens = items;
+                break;
+            }
+        }
+
         p.getInventory().clear();
+        if (healTokens != null) {
+            p.getInventory().addItem(healTokens);
+        }
         ItemStack skull = k02ScoutData.getSkull();
         p.getInventory().setItem(EquipmentSlot.HEAD, skull);
 
         // Set up reload sequence
-        ArrayList<Pair<Long, RunnableData>> rData = k02ScoutData.getScoutReloadSequence();
+        ArrayList<Pair<Long, RunnableData>> rData = k02ScoutData.getReloadSequence();
         ReloadSequence sequence = new ReloadSequence(p, rData);
         sequence.generateSequence();
         sequence.runSequence();

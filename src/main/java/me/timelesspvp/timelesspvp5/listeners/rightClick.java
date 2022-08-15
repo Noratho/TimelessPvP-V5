@@ -1,6 +1,7 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
+import me.timelesspvp.timelesspvp5.dataClasses.PlayerData;
 import me.timelesspvp.timelesspvp5.kits.k07WeegeeMethods;
 import me.timelesspvp.timelesspvp5.kits.k08PirateData;
 import me.timelesspvp.timelesspvp5.kits.k08PirateMethods;
@@ -73,6 +74,7 @@ public class rightClick implements Listener {
                 case "zzzMusketzzz" -> {
                     if (p.getInventory().contains(k08PirateData.getBullet())) {
                         k08PirateMethods.shootMusket(p);
+                        // remove musket ball
                         for (ItemStack items : p.getInventory().getContents()) {
                             String name = ChatColor.stripColor(items.getItemMeta().getDisplayName());
                             if (name.equals("zzzBulletzzz")) {
