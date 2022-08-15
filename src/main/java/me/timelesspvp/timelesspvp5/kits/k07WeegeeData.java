@@ -3,6 +3,7 @@ package me.timelesspvp.timelesspvp5.kits;
 import me.timelesspvp.timelesspvp5.helperMethods;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;

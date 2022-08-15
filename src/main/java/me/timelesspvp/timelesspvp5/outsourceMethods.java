@@ -1,7 +1,7 @@
 package me.timelesspvp.timelesspvp5;
 
 import me.timelesspvp.timelesspvp5.dataClasses.PlayerData;
-import me.timelesspvp.timelesspvp5.kits.k07WeegeeData;
+import me.timelesspvp.timelesspvp5.kits.*;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
@@ -22,38 +22,22 @@ public class outsourceMethods {
 
 
         // Archer
-        ItemStack archerSel = new ItemStack(Material.ARROW, 1);
-        ItemMeta archerMeta = archerSel.getItemMeta();
-        archerMeta.setDisplayName(
-                ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
-                        ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Archer" +
-                        ChatColor.DARK_AQUA + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
-        archerSel.setItemMeta(archerMeta);
-
+        ItemStack archerSel = k01ArcherData.getSel();
 
         // Scout
-        ItemStack scoutSel = new ItemStack(Material.BLACK_STAINED_GLASS, 1);
-        ItemMeta scoutMeta = scoutSel.getItemMeta();
-        scoutMeta.setDisplayName(
-                ChatColor.BLACK + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
-                        ChatColor.WHITE + "" + ChatColor.BOLD + "Scout" +
-                        ChatColor.BLACK + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
-        scoutSel.setItemMeta(scoutMeta);
+        ItemStack scoutSel = k02ScoutData.getSel();
+
+        // Melon
+        ItemStack melonSel = k03MelonData.getSel();
 
         // Weegee
         ItemStack weegeeSel = k07WeegeeData.getSkull();
 
-
         // Pirate
-        ItemStack pirateSel = new ItemStack(Material.FLINT, 1);
-        ItemMeta pirateSelMeta = pirateSel.getItemMeta();
-        pirateSelMeta.setDisplayName(
-                ChatColor.RED + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
-                        ChatColor.GRAY + "" + ChatColor.BOLD + "Pirate" +
-                        ChatColor.RED + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
-        pirateSel.setItemMeta(pirateSelMeta);
+        ItemStack pirateSel = k08PirateData.getSel();
 
-        inv.addItem(archerSel, scoutSel, weegeeSel, pirateSel);
+
+        inv.addItem(archerSel, scoutSel, melonSel, weegeeSel, pirateSel);
 
         p.openInventory(inv);
     }

@@ -68,6 +68,16 @@ public class k02ScoutData {
         p.teleport(loc);
     }
 
+    public static ItemStack getSel() {
+        ItemStack scoutSel = new ItemStack(Material.BLACK_STAINED_GLASS, 1);
+        ItemMeta scoutMeta = scoutSel.getItemMeta();
+        scoutMeta.setDisplayName(
+                ChatColor.BLACK + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
+                        ChatColor.WHITE + "" + ChatColor.BOLD + "Scout" +
+                        ChatColor.BLACK + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
+        scoutSel.setItemMeta(scoutMeta);
+        return scoutSel;
+    }
 
     public static ItemStack getPocketPistol(int amount) {
         ItemStack pocketPistol = new ItemStack(Material.STICK, amount);
@@ -81,7 +91,6 @@ public class k02ScoutData {
         return pocketPistol;
     }
 
-
     public static ItemStack getHolyMack() {
         ItemStack holyMackerel = new ItemStack(Material.DIAMOND_SWORD, 1);
         ItemMeta holyMackerelMeta = holyMackerel.getItemMeta();
@@ -94,7 +103,6 @@ public class k02ScoutData {
         holyMackerel.setItemMeta(holyMackerelMeta);
         return holyMackerel;
     }
-
 
     public static ItemStack getReload() {
         ItemStack reload = new ItemStack(Material.FEATHER, 1);

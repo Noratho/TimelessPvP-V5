@@ -54,7 +54,16 @@ public class k08PirateData {
         Location loc = helperMethods.getLocationConfig("pirate");
         p.teleport(loc);
     }
-
+    public static ItemStack getSel() {
+        ItemStack pirateSel = new ItemStack(Material.FLINT, 1);
+        ItemMeta pirateSelMeta = pirateSel.getItemMeta();
+        pirateSelMeta.setDisplayName(
+                ChatColor.RED + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz" +
+                        ChatColor.GRAY + "" + ChatColor.BOLD + "Pirate" +
+                        ChatColor.RED + "" + ChatColor.MAGIC + ChatColor.BOLD + "zzz");
+        pirateSel.setItemMeta(pirateSelMeta);
+        return pirateSel;
+    }
 
     public static ItemStack getCutlass() {
 
