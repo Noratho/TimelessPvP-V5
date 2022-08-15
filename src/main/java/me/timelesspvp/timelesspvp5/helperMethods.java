@@ -21,6 +21,11 @@ public class helperMethods {
             p.removePotionEffect(effect.getType());
     }
 
+    public static void removeMarks(Player p) {
+        PersistentDataContainer pNBT = p.getPersistentDataContainer();
+        pNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
+                "melonMarked"), PersistentDataType.BYTE, (byte) 0);
+    }
 
     public static Location getLocationConfig(String kit) {
 

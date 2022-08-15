@@ -50,7 +50,7 @@ public class outsourceMethods {
         if (pData.getActiveReloads() != null){
             pData.cancelActiveReloads();
         }
-
+        helperMethods.removeMarks(p);
 
         PersistentDataContainer pNBT = p.getPersistentDataContainer();
 
@@ -114,6 +114,7 @@ public class outsourceMethods {
                 "state"), PersistentDataType.STRING, "out");
 
         helperMethods.removeOldCombat(p);
+        helperMethods.removeMarks(p);
     }
 
 
