@@ -7,24 +7,22 @@ import org.bukkit.inventory.Inventory;
 
 import java.util.UUID;
 
-public class PlayerData {
+public class PlayerData extends LivingEntityData {
 
-    private UUID uuid;
+    // Stored data
     private Inventory inv;
     private Location loc;
     private GameMode gm;
+
     private ReloadSequence activeReload;
 
 
     public PlayerData(UUID uuid, Inventory inv, Location loc, GameMode gm) {
-        this.uuid = uuid;
+        super(uuid);
         this.inv = inv;
         this.loc = loc;
         this.gm = gm;
     }
-
-    public UUID getUuid() { return uuid; }
-    public void setUuid(UUID uuid) { this.uuid = uuid; }
 
     public Inventory getInv() { return inv; }
     public void setInv(Inventory inv) { this.inv = inv; }
