@@ -90,7 +90,7 @@ public class k02ScoutMethods {
         sequence.generateSequence();
         sequence.runSequence();
 
-        PlayerData pData = TimelessPvP5.getPlrData().get(p.getUniqueId());
+        PlayerData pData = TimelessPvP5.getPlr(p.getUniqueId());
         pData.setActiveReload(sequence);
     }
 
