@@ -4,9 +4,7 @@ import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -48,19 +46,8 @@ public class LivingEntityData {
         buffs.put(key, buff);
     }
     public void removeBuff(String key) {
-        if (buffs.containsKey(key)) {
-            buffs.get(key).cancel();
-            buffs.remove(key);
-
-            LivingEntity entity = (LivingEntity) Bukkit.getEntity(uuid);
-            if (Bukkit.getEntity(uuid) == null) {
-                entity = Bukkit.getPlayer(uuid);
-            }
-            PersistentDataContainer pNBT = entity.getPersistentDataContainer();
-            pNBT.remove(new NamespacedKey(TimelessPvP5.getPlugin(), key));
-        }
+        effectCleanseHelper(key, buffs);
     }
-
 
     public BukkitTask getDebuff(String key) { return debuffs.get(key); }
     public void addDebuff(String key, BukkitTask debuff) {
@@ -70,10 +57,13 @@ public class LivingEntityData {
         debuffs.put(key, debuff);
     }
     public void removeDebuff(String key) {
-        if (debuffs.containsKey(key)) {
-            Bukkit.getLogger().info("removedebuff");
-            debuffs.get(key).cancel();
-            debuffs.remove(key);
+        effectCleanseHelper(key, debuffs);
+    }
+
+    private void effectCleanseHelper(String key, Map<String, BukkitTask> map) {
+        if (map.containsKey(key)) {
+            map.get(key).cancel();
+            map.remove(key);
 
             LivingEntity entity = (LivingEntity) Bukkit.getEntity(uuid);
             if (Bukkit.getEntity(uuid) == null) {

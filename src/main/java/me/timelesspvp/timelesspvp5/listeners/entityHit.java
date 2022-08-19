@@ -42,6 +42,7 @@ public class entityHit implements Listener {
                     attacker.getInventory().getItemInMainHand().getItemMeta().getDisplayName())) {
 
                 case "Derp_Airlines" -> {
+
                     if (victimNBT.has(new NamespacedKey(TimelessPvP5.getPlugin(),
                             "melonMark"))) {
                         int stacks = (int) victimNBT.get(new NamespacedKey(TimelessPvP5.getPlugin(),
@@ -51,7 +52,6 @@ public class entityHit implements Listener {
                         victim.setVelocity(victim.getVelocity()
                                 .add(new Vector(0, yAdd, 0)));
 
-                        Bukkit.getLogger().info("derp bong");
                         TimelessPvP5.getEnt(victim.getUniqueId()).removeDebuff("melonMark");
                         e.setCancelled(true);
                     }
