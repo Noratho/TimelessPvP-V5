@@ -11,10 +11,10 @@ public class k07WeegeeMethods {
 
     public static void weegeeShift(Player p) {
         p.setVelocity(p.getFacing().getDirection().multiply(-1.7).add(new Vector(0,0.2, 0)));
-        p.playSound(p.getLocation(), Sound.ENTITY_CAT_AMBIENT, 15, 0.5f);
+        p.playSound(p.getLocation(), Sound.ENTITY_CAT_AMBIENT, 10, 0.5f);
 
         // Task to notify when cooldown finished
-        SoundData notifySound = new SoundData(Sound.BLOCK_NOTE_BLOCK_PLING, 1, 1);
+        SoundData notifySound = new SoundData(Sound.BLOCK_NOTE_BLOCK_PLING, 0.7f, 1);
         soundTask notifyCooldown = new soundTask(p, 50L, notifySound);
         notifyCooldown.runTaskLater(TimelessPvP5.getPlugin(), notifyCooldown.getDelay());
     }

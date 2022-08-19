@@ -6,6 +6,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.util.HashMap;
@@ -25,6 +26,13 @@ public class LivingEntityData {
 
     public boolean isActive() {
 
+        BukkitScheduler scheduler = Bukkit.getScheduler();
+        for (BukkitTask task : buffs.values()) {
+            if (scheduler.isCurrentlyRunning(task.getTaskId())) { return true; }
+        }
+        for (BukkitTask task : debuffs.values()) {
+            if (scheduler.isCurrentlyRunning(task.getTaskId())) { return true; }
+        }
         return false;
     }
 

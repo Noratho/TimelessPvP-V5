@@ -1,6 +1,7 @@
 package me.timelesspvp.timelesspvp5.kits;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
+import me.timelesspvp.timelesspvp5.dataClasses.LivingEntityData;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -13,6 +14,7 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.sql.Time;
 import java.util.UUID;
 
 public class k03MelonMethods {
@@ -41,11 +43,11 @@ public class k03MelonMethods {
         runnable.runTaskLater(TimelessPvP5.getPlugin(), 5 * 20L);
     }
 
-    public static BukkitRunnable getMarkTask(LivingEntity victim) {
+    public static BukkitRunnable getMarkTask(LivingEntity victim, int hits) {
         PersistentDataContainer victimNBT = victim.getPersistentDataContainer();
 
-        BukkitRunnable debuff = new BukkitRunnable() {
-            int timer = 5;
+        return new BukkitRunnable() {
+            int timer = 2;
             final ItemStack melon = new ItemStack(Material.MELON_SLICE);
             UUID victimUUID = victim.getUniqueId();
 
@@ -54,18 +56,21 @@ public class k03MelonMethods {
                 if (timer != 0) {
                     // extra is speed in this case
                     victim.getWorld().spawnParticle(Particle.ITEM_CRACK,
-                            victim.getLocation().add(0, 2.2, 0),37,
+                            victim.getLocation().add(0, 2.2, 0),hits*7 + 10,
                             0.01, 0.01, 0.01, 0.05, melon);
                     timer--;
                 } else {
                     cancel();
-                    victimNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
-                            "melonMarked"), PersistentDataType.BYTE, (byte) 0);
+                    if (TimelessPvP5.getLiveEntData().containsKey(victimUUID)) {
+                        if (!TimelessPvP5.getEnt(victimUUID).isActive()) {
+                            TimelessPvP5.getLiveEntData().remove(victimUUID);
+                        }
+                    }
+                    victimNBT.remove(new NamespacedKey(TimelessPvP5.getPlugin(),
+                            "melonMarked"));
                 }
             }
         };
-
-        return debuff;
     }
 
 

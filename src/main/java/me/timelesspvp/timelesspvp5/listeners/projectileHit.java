@@ -50,30 +50,34 @@ public class projectileHit implements Listener {
                 victim.damage(scoutDmg, shooter);
                 updateScoutStacks(shooter, shooterNBT);
             }
+
             case "melon" -> {
                 // mark enemy hit
+                int stacks = 1;
+                if (victimNBT.has(new NamespacedKey(TimelessPvP5.getPlugin(),
+                        "melonMarked"))) {
+                    stacks = (int) victimNBT.get(new NamespacedKey(TimelessPvP5.getPlugin(),
+                                    "melonMarked"), PersistentDataType.BYTE) + 1;
+                }
                 victimNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
-                        "melonMarked"), PersistentDataType.BYTE, (byte) 1);
+                        "melonMarked"), PersistentDataType.BYTE, (byte) stacks);
 
                 // Give particle mark
-                BukkitTask debuff = k03MelonMethods.getMarkTask(victim)
+                BukkitTask debuff = k03MelonMethods.getMarkTask(victim, stacks)
                         .runTaskTimer(TimelessPvP5.getPlugin(), 0L, 20L);
 
+                // if player add buff to player
                 if (victim instanceof Player) {
                     TimelessPvP5.getPlr(victim.getUniqueId()).addDebuff("melonMark",debuff);
                 } else {
                     if (!TimelessPvP5.getLiveEntData().containsKey(victim.getUniqueId())) {
                         TimelessPvP5.addLiveEntDataEntry(victim.getUniqueId());
-                        LivingEntityData entData = TimelessPvP5.getEnt(victim.getUniqueId());
-                        entData.addDebuff("melonMark", debuff);
-                    } else {
-                        LivingEntityData entData = TimelessPvP5.getEnt(victim.getUniqueId());
-                        entData.addDebuff("melonMark", debuff);
                     }
+                    LivingEntityData entData = TimelessPvP5.getEnt(victim.getUniqueId());
+                    entData.addDebuff("melonMark", debuff);
                 }
-//                TimelessPvP5.getPlr(victim).addDebuff();
-//                victim.getUniqueId();
             }
+
             case "pirate" -> {
                 victim.damage(pirateDmg, shooter);
             }
