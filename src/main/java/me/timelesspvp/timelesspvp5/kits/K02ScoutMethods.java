@@ -17,7 +17,7 @@ import org.javatuples.Pair;
 
 import java.util.ArrayList;
 
-public class k02ScoutMethods {
+public class K02ScoutMethods {
 
     public static void shootPocketPistol(Player p) {
 
@@ -81,11 +81,11 @@ public class k02ScoutMethods {
         if (healTokens != null) {
             p.getInventory().addItem(healTokens);
         }
-        ItemStack skull = k02ScoutData.getSkull();
+        ItemStack skull = K02ScoutData.getSkull();
         p.getInventory().setItem(EquipmentSlot.HEAD, skull);
 
         // Set up reload sequence
-        ArrayList<Pair<Long, RunnableData>> rData = k02ScoutData.getReloadSequence();
+        ArrayList<Pair<Long, RunnableData>> rData = K02ScoutData.getReloadSequence();
         ReloadSequence sequence = new ReloadSequence(p, rData);
         sequence.generateSequence();
         sequence.runSequence();

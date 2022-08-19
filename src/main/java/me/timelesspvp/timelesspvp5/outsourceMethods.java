@@ -3,7 +3,6 @@ package me.timelesspvp.timelesspvp5;
 import me.timelesspvp.timelesspvp5.dataClasses.PlayerData;
 import me.timelesspvp.timelesspvp5.kits.*;
 import org.bukkit.*;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -22,19 +21,19 @@ public class outsourceMethods {
 
 
         // Archer
-        ItemStack archerSel = k01ArcherData.getSel();
+        ItemStack archerSel = K01ArcherData.getSel();
 
         // Scout
-        ItemStack scoutSel = k02ScoutData.getSel();
+        ItemStack scoutSel = K02ScoutData.getSel();
 
         // Melon
-        ItemStack melonSel = k03MelonData.getSel();
+        ItemStack melonSel = K03MelonData.getSel();
 
         // Weegee
-        ItemStack weegeeSel = k07WeegeeData.getSkull();
+        ItemStack weegeeSel = K07WeegeeData.getSkull();
 
         // Pirate
-        ItemStack pirateSel = k08PirateData.getSel();
+        ItemStack pirateSel = K08PirateData.getSel();
 
 
         inv.addItem(archerSel, scoutSel, melonSel, weegeeSel, pirateSel);

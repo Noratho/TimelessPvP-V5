@@ -13,7 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-public class playerKillPlayer implements Listener {
+public class PlayerKillPlayerListener implements Listener {
 
     @EventHandler
     public void onKillPlayer(PlayerDeathEvent e) {
@@ -22,8 +22,8 @@ public class playerKillPlayer implements Listener {
 
             Player p = e.getEntity().getKiller();
             // If player is not in the game then send don't continue
-            PersistentDataContainer perData = p.getPersistentDataContainer();
-            if (perData.get(new NamespacedKey(TimelessPvP5.getPlugin(),
+            PersistentDataContainer pNBT = p.getPersistentDataContainer();
+            if (pNBT.get(new NamespacedKey(TimelessPvP5.getPlugin(),
                     "state"), PersistentDataType.STRING).equals("out")) {
                 return;
             }

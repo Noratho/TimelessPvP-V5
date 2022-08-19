@@ -17,7 +17,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.sql.Time;
 import java.util.UUID;
 
-public class k03MelonMethods {
+public class K03MelonMethods {
 
     public static void shootEgg(Player p) {
         Location spawnLoc = p.getEyeLocation();

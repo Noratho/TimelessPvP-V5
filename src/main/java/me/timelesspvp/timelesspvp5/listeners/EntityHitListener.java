@@ -1,8 +1,6 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
-import me.timelesspvp.timelesspvp5.dataClasses.LivingEntityData;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.LivingEntity;
@@ -15,7 +13,7 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 
-public class entityHit implements Listener {
+public class EntityHitListener implements Listener {
 
     @EventHandler
     public static void onHit(EntityDamageByEntityEvent e) {

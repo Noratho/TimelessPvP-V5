@@ -19,7 +19,7 @@ import org.javatuples.Pair;
 
 import java.util.ArrayList;
 
-public class k08PirateData {
+public class K08PirateData {
 
     public static void giveKit(Player p) {
 

@@ -8,8 +8,6 @@ import org.bukkit.*;
 import org.bukkit.entity.AbstractArrow;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -17,7 +15,7 @@ import org.javatuples.Pair;
 
 import java.util.ArrayList;
 
-public class k08PirateMethods {
+public class K08PirateMethods {
 
     public static void shootMusket(Player p) {
 
@@ -53,7 +51,7 @@ public class k08PirateMethods {
     public static void reloadPistol(Player p) {
 
         // Set up reload sequence
-        ArrayList<Pair<Long, RunnableData>> rData = k08PirateData.getReloadSequence();
+        ArrayList<Pair<Long, RunnableData>> rData = K08PirateData.getReloadSequence();
         ReloadSequence sequence = new ReloadSequence(p, rData);
         sequence.generateSequence();
         sequence.runSequence();

@@ -9,7 +9,7 @@ import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-public class healthRegen implements Listener {
+public class HealthRegenListener implements Listener {
 
     @EventHandler
     public static void onRegen(EntityRegainHealthEvent e) {

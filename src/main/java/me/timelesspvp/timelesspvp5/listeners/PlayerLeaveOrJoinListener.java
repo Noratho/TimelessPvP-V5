@@ -2,7 +2,6 @@ package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import me.timelesspvp.timelesspvp5.outsourceMethods;
-import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,7 +12,7 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
 
-public class playerLeaveOrJoin implements Listener {
+public class PlayerLeaveOrJoinListener implements Listener {
 
 
     // Player DC
@@ -28,8 +27,8 @@ public class playerLeaveOrJoin implements Listener {
 
         Player p = e.getPlayer();
 
-        PersistentDataContainer data = p.getPersistentDataContainer();
-        data.set(new NamespacedKey(TimelessPvP5.getPlugin(),
+        PersistentDataContainer pNBT = p.getPersistentDataContainer();
+        pNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "state"), PersistentDataType.STRING, "out");
     }
 }

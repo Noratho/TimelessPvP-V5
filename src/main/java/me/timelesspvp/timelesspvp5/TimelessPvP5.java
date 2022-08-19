@@ -1,8 +1,8 @@
 package me.timelesspvp.timelesspvp5;
 
-import me.timelesspvp.timelesspvp5.commands.leaveArena;
+import me.timelesspvp.timelesspvp5.commands.LeaveArenaCommand;
 import me.timelesspvp.timelesspvp5.commands.lobbyCommand;
-import me.timelesspvp.timelesspvp5.commands.reloadConfig;
+import me.timelesspvp.timelesspvp5.commands.ReloadConfigCommand;
 import me.timelesspvp.timelesspvp5.dataClasses.LivingEntityData;
 import me.timelesspvp.timelesspvp5.dataClasses.PlayerData;
 import me.timelesspvp.timelesspvp5.listeners.*;
@@ -11,7 +11,6 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -84,21 +83,21 @@ public final class TimelessPvP5 extends JavaPlugin {
 
 
         // Listeners
-        getServer().getPluginManager().registerEvents(new rightClick(),this);
-        getServer().getPluginManager().registerEvents(new menu(),this);
-        getServer().getPluginManager().registerEvents(new projectileHit(),this);
-        getServer().getPluginManager().registerEvents(new playerLeaveOrJoin(),this);
-        getServer().getPluginManager().registerEvents(new playerKillPlayer(), this);
-        getServer().getPluginManager().registerEvents(new playerRespawn(), this);
-        getServer().getPluginManager().registerEvents(new playerLeaveOrJoin(), this);
-        getServer().getPluginManager().registerEvents(new healthRegen(), this);
-        getServer().getPluginManager().registerEvents(new entityHit(), this);
-        getServer().getPluginManager().registerEvents(new itemDrop(), this);
-        getServer().getPluginManager().registerEvents(new playerShift(), this);
+        getServer().getPluginManager().registerEvents(new RightClickListener(),this);
+        getServer().getPluginManager().registerEvents(new InventoryClickListener(),this);
+        getServer().getPluginManager().registerEvents(new ProjectileHitListener(),this);
+        getServer().getPluginManager().registerEvents(new PlayerLeaveOrJoinListener(),this);
+        getServer().getPluginManager().registerEvents(new PlayerKillPlayerListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerRespawnListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerLeaveOrJoinListener(), this);
+        getServer().getPluginManager().registerEvents(new HealthRegenListener(), this);
+        getServer().getPluginManager().registerEvents(new EntityHitListener(), this);
+        getServer().getPluginManager().registerEvents(new ItemDropListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerShiftListener(), this);
 
         // Commands
-        getCommand("leave").setExecutor(new leaveArena());
-        getCommand("reloadConfig").setExecutor(new reloadConfig());
+        getCommand("leave").setExecutor(new LeaveArenaCommand());
+        getCommand("reloadConfig").setExecutor(new ReloadConfigCommand());
         getCommand("lobby").setExecutor(new lobbyCommand());
 
 

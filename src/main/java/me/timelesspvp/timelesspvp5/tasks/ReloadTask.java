@@ -6,11 +6,11 @@ import me.timelesspvp.timelesspvp5.dataClasses.SoundData;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 
-public class reloadTask extends abstractTask{
+public class ReloadTask extends AbstractTask {
 
     private final RunnableData data;
 
-    public reloadTask(Player p, Long delay, RunnableData data) {
+    public ReloadTask(Player p, Long delay, RunnableData data) {
         this.p = p;
         this.delay = delay;
         this.data = data;

@@ -1,10 +1,8 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
-import me.timelesspvp.timelesspvp5.dataClasses.PlayerData;
 import me.timelesspvp.timelesspvp5.kits.*;
 import me.timelesspvp.timelesspvp5.outsourceMethods;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
@@ -17,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-public class rightClick implements Listener {
+public class RightClickListener implements Listener {
 
     @EventHandler
     public void useItem(PlayerInteractEvent e) {
@@ -25,8 +23,8 @@ public class rightClick implements Listener {
         Player p = e.getPlayer();
 
         // If player is not in the game then send don't continue
-        PersistentDataContainer perData = p.getPersistentDataContainer();
-        if (perData.get(new NamespacedKey(TimelessPvP5.getPlugin(),
+        PersistentDataContainer pNBT = p.getPersistentDataContainer();
+        if (pNBT.get(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "state"), PersistentDataType.STRING).equals("out")) {
             return;
         }
@@ -35,12 +33,9 @@ public class rightClick implements Listener {
         // If a right click
         if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK ) {
 
-
             if (!e.hasItem()) {
                 return;
             }
-
-
 
             switch (ChatColor.stripColor(e.getItem().getItemMeta().getDisplayName())) {
 
@@ -54,27 +49,27 @@ public class rightClick implements Listener {
                 }
 
                 case "zzzPretty Boy's Pocket Pistolzzz" -> {
-                    k02ScoutMethods.shootPocketPistol(p);
+                    K02ScoutMethods.shootPocketPistol(p);
                     e.getItem().setAmount(e.getItem().getAmount() - 1);
                 }
 
                 case "Reload" -> {
-                    k02ScoutMethods.reloadPistol(p);
+                    K02ScoutMethods.reloadPistol(p);
 
                 }
 
                 case "Stick_of_Power" -> {
-                    k03MelonMethods.shootEgg(p);
+                    K03MelonMethods.shootEgg(p);
                 }
 
                 case "zzz1-UPzzz" -> {
-                    k07WeegeeMethods.useOneUp(p);
+                    K07WeegeeMethods.useOneUp(p);
                     e.getItem().setAmount(e.getItem().getAmount() - 1);
                 }
 
                 case "zzzMusketzzz" -> {
-                    if (p.getInventory().contains(k08PirateData.getBullet())) {
-                        k08PirateMethods.shootMusket(p);
+                    if (p.getInventory().contains(K08PirateData.getBullet())) {
+                        K08PirateMethods.shootMusket(p);
                         // remove musket ball
                         for (ItemStack items : p.getInventory().getContents()) {
                             String name = ChatColor.stripColor(items.getItemMeta().getDisplayName());

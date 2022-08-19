@@ -14,7 +14,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class k01ArcherData {
+public class K01ArcherData {
 
     public static void giveKit(Player p) {
 

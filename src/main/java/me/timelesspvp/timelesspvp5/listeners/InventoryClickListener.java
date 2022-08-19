@@ -3,10 +3,8 @@ package me.timelesspvp.timelesspvp5.listeners;
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import me.timelesspvp.timelesspvp5.kits.*;
 import me.timelesspvp.timelesspvp5.helperMethods;
-import me.timelesspvp.timelesspvp5.outsourceMethods;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,7 +13,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-public class menu implements Listener {
+public class InventoryClickListener implements Listener {
 
     @EventHandler
     public void onKitSelect(InventoryClickEvent e) {
@@ -27,8 +25,8 @@ public class menu implements Listener {
                 return;
             }
 
-            PersistentDataContainer data = p.getPersistentDataContainer();
-            String state = data.get(new NamespacedKey(TimelessPvP5.getPlugin(),
+            PersistentDataContainer pNBT = p.getPersistentDataContainer();
+            String state = pNBT.get(new NamespacedKey(TimelessPvP5.getPlugin(),
                     "state"), PersistentDataType.STRING);
 
             boolean haveMatched = true;
@@ -42,7 +40,7 @@ public class menu implements Listener {
                     helperMethods.removeEffects(p);
                     p.closeInventory();
 
-                    k01ArcherData.giveKit(p);
+                    K01ArcherData.giveKit(p);
                 }
 
                 // Scout
@@ -52,7 +50,7 @@ public class menu implements Listener {
                     helperMethods.removeEffects(p);
                     p.closeInventory();
 
-                    k02ScoutData.giveKit(p);
+                    K02ScoutData.giveKit(p);
                 }
                 // Melon
                 case GLISTERING_MELON_SLICE -> {
@@ -61,7 +59,7 @@ public class menu implements Listener {
                     helperMethods.removeEffects(p);
                     p.closeInventory();
 
-                    k03MelonData.giveKit(p);
+                    K03MelonData.giveKit(p);
                 }
 
                 // Weegee
@@ -71,7 +69,7 @@ public class menu implements Listener {
                     helperMethods.removeEffects(p);
                     p.closeInventory();
 
-                    k07WeegeeData.giveKit(p);
+                    K07WeegeeData.giveKit(p);
                 }
                 // Pirate
                 case FLINT -> {
@@ -80,7 +78,7 @@ public class menu implements Listener {
                     helperMethods.removeEffects(p);
                     p.closeInventory();
 
-                    k08PirateData.giveKit(p);
+                    K08PirateData.giveKit(p);
 
                 }
 
@@ -90,7 +88,7 @@ public class menu implements Listener {
             }
 
             if (haveMatched) {
-                data.set(new NamespacedKey(TimelessPvP5.getPlugin(),
+                pNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                         "state"), PersistentDataType.STRING, "in");
                 helperMethods.giveOldCombat(p);
             }

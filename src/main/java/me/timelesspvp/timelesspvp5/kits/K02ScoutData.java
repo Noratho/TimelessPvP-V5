@@ -21,7 +21,7 @@ import org.javatuples.Pair;
 import java.io.File;
 import java.util.ArrayList;
 
-public class k02ScoutData {
+public class K02ScoutData {
 
     public static void giveKit(Player p) {
 

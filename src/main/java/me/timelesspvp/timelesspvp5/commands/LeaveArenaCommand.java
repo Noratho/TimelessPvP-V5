@@ -1,15 +1,18 @@
 package me.timelesspvp.timelesspvp5.commands;
 
-import me.timelesspvp.timelesspvp5.TimelessPvP5;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import me.timelesspvp.timelesspvp5.outsourceMethods;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.potion.PotionEffect;
 import org.jetbrains.annotations.NotNull;
 
-public class reloadConfig implements CommandExecutor {
+import java.util.Arrays;
+
+public class LeaveArenaCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender,
@@ -17,13 +20,12 @@ public class reloadConfig implements CommandExecutor {
                              @NotNull String label,
                              @NotNull String[] args) {
 
-        TimelessPvP5.getPlugin().reloadConfig();
 
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            p.sendMessage(ChatColor.BLUE + "Plugin Config Reloaded");
+
+            outsourceMethods.leaveProtocol(p);
         }
-        Bukkit.getLogger().info("reload configssss");
 
         return true;
     }

@@ -1,10 +1,7 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
-import me.timelesspvp.timelesspvp5.dataClasses.SoundData;
-import me.timelesspvp.timelesspvp5.kits.k07WeegeeMethods;
-import me.timelesspvp.timelesspvp5.tasks.soundTask;
-import org.bukkit.Bukkit;
+import me.timelesspvp.timelesspvp5.kits.K07WeegeeMethods;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
@@ -16,13 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
-import org.javatuples.Pair;
-
-public class playerShift implements Listener {
+public class PlayerShiftListener implements Listener {
 
     static final String weegeeToken = "weegeeShift";
     static final Long weegeeCD = 2L;
@@ -37,8 +28,8 @@ public class playerShift implements Listener {
         Player p = e.getPlayer();
 
         // if player not in game then end
-        PersistentDataContainer perData = p.getPersistentDataContainer();
-        if (perData.get(new NamespacedKey(TimelessPvP5.getPlugin(),
+        PersistentDataContainer pNBT = p.getPersistentDataContainer();
+        if (pNBT.get(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "state"), PersistentDataType.STRING).equals("out")) {
             return;
         }
@@ -60,7 +51,7 @@ public class playerShift implements Listener {
                 TimelessPvP5.addCooldownEntry(p.getUniqueId(), weegeeToken,
                         System.currentTimeMillis() + (weegeeCD * 1000));
 
-                k07WeegeeMethods.weegeeShift(p);
+                K07WeegeeMethods.weegeeShift(p);
 
             }
         }

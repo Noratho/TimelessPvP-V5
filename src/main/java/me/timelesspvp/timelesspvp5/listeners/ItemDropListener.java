@@ -10,14 +10,14 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-public class itemDrop implements Listener {
+public class ItemDropListener implements Listener {
 
     @EventHandler
     public void onItemDrop(PlayerDropItemEvent e) {
 
         Player p = e.getPlayer();
-        PersistentDataContainer perData = p.getPersistentDataContainer();
-        if (!perData.get(new NamespacedKey(TimelessPvP5.getPlugin(),
+        PersistentDataContainer pNBT = p.getPersistentDataContainer();
+        if (!pNBT.get(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "state"), PersistentDataType.STRING).equals("out")) {
             e.setCancelled(true);
         }

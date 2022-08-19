@@ -46,7 +46,7 @@ public class LivingEntityData {
         buffs.put(key, buff);
     }
     public void removeBuff(String key) {
-        effectCleanseHelper(key, buffs);
+        buffCleanseHelper(key, buffs);
     }
 
     public BukkitTask getDebuff(String key) { return debuffs.get(key); }
@@ -57,10 +57,10 @@ public class LivingEntityData {
         debuffs.put(key, debuff);
     }
     public void removeDebuff(String key) {
-        effectCleanseHelper(key, debuffs);
+        buffCleanseHelper(key, debuffs);
     }
 
-    private void effectCleanseHelper(String key, Map<String, BukkitTask> map) {
+    private void buffCleanseHelper(String key, Map<String, BukkitTask> map) {
         if (map.containsKey(key)) {
             map.get(key).cancel();
             map.remove(key);

@@ -2,8 +2,8 @@ package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import me.timelesspvp.timelesspvp5.dataClasses.LivingEntityData;
-import me.timelesspvp.timelesspvp5.kits.k02ScoutData;
-import me.timelesspvp.timelesspvp5.kits.k03MelonMethods;
+import me.timelesspvp.timelesspvp5.kits.K02ScoutData;
+import me.timelesspvp.timelesspvp5.kits.K03MelonMethods;
 import org.bukkit.*;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -17,7 +17,7 @@ import org.bukkit.scheduler.BukkitTask;
 
 import java.util.Objects;
 
-public class projectileHit implements Listener {
+public class ProjectileHitListener implements Listener {
 
     private final int scoutDmg = 7;
     private final int pirateDmg = 12;
@@ -63,7 +63,7 @@ public class projectileHit implements Listener {
                         "melonMark"), PersistentDataType.BYTE, (byte) stacks);
 
                 // Give particle mark
-                BukkitTask debuff = k03MelonMethods.getMarkTask(victim, stacks)
+                BukkitTask debuff = K03MelonMethods.getMarkTask(victim, stacks)
                         .runTaskTimer(TimelessPvP5.getPlugin(), 0L, 20L);
 
                 // if player add buff to player
@@ -117,7 +117,7 @@ public class projectileHit implements Listener {
             case 4 -> {
                 perData.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                         "k02ScoutStacks"), PersistentDataType.INTEGER, 0);
-                p.getInventory().addItem(k02ScoutData.getPocketPistol(1));
+                p.getInventory().addItem(K02ScoutData.getPocketPistol(1));
                 p.playSound(p.getLocation(), Sound.BLOCK_PISTON_EXTEND, 0.5f, 0.707107f);
             }
         }
