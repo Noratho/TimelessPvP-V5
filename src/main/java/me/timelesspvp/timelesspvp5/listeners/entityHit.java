@@ -2,6 +2,7 @@ package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import me.timelesspvp.timelesspvp5.dataClasses.LivingEntityData;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.LivingEntity;
@@ -42,13 +43,16 @@ public class entityHit implements Listener {
 
                 case "Derp_Airlines" -> {
                     if (victimNBT.has(new NamespacedKey(TimelessPvP5.getPlugin(),
-                            "melonMarked"))) {
+                            "melonMark"))) {
                         int stacks = (int) victimNBT.get(new NamespacedKey(TimelessPvP5.getPlugin(),
-                                "melonMarked"), PersistentDataType.BYTE);
+                                "melonMark"), PersistentDataType.BYTE);
 
                         double yAdd = stacks/(1.7*Math.sqrt(stacks));
                         victim.setVelocity(victim.getVelocity()
                                 .add(new Vector(0, yAdd, 0)));
+
+                        Bukkit.getLogger().info("derp bong");
+                        TimelessPvP5.getEnt(victim.getUniqueId()).removeDebuff("melonMark");
                         e.setCancelled(true);
                     }
                 }

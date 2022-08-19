@@ -55,12 +55,12 @@ public class projectileHit implements Listener {
                 // mark enemy hit
                 int stacks = 1;
                 if (victimNBT.has(new NamespacedKey(TimelessPvP5.getPlugin(),
-                        "melonMarked"))) {
+                        "melonMark"))) {
                     stacks = (int) victimNBT.get(new NamespacedKey(TimelessPvP5.getPlugin(),
-                                    "melonMarked"), PersistentDataType.BYTE) + 1;
+                                    "melonMark"), PersistentDataType.BYTE) + 1;
                 }
                 victimNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
-                        "melonMarked"), PersistentDataType.BYTE, (byte) stacks);
+                        "melonMark"), PersistentDataType.BYTE, (byte) stacks);
 
                 // Give particle mark
                 BukkitTask debuff = k03MelonMethods.getMarkTask(victim, stacks)

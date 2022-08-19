@@ -47,7 +47,7 @@ public class k03MelonMethods {
         PersistentDataContainer victimNBT = victim.getPersistentDataContainer();
 
         return new BukkitRunnable() {
-            int timer = 2;
+            int timer = 3;
             final ItemStack melon = new ItemStack(Material.MELON_SLICE);
             UUID victimUUID = victim.getUniqueId();
 
@@ -55,9 +55,10 @@ public class k03MelonMethods {
             public void run() {
                 if (timer != 0) {
                     // extra is speed in this case
+                    double offset = 0.01 + hits*0.01;
                     victim.getWorld().spawnParticle(Particle.ITEM_CRACK,
-                            victim.getLocation().add(0, 2.2, 0),hits*7 + 10,
-                            0.01, 0.01, 0.01, 0.05, melon);
+                            victim.getLocation().add(0, 2.2, 0),hits*10,
+                            offset, offset, offset, 0.05, melon);
                     timer--;
                 } else {
                     cancel();
@@ -67,7 +68,7 @@ public class k03MelonMethods {
                         }
                     }
                     victimNBT.remove(new NamespacedKey(TimelessPvP5.getPlugin(),
-                            "melonMarked"));
+                            "melonMark"));
                 }
             }
         };

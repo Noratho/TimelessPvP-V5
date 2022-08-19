@@ -3,6 +3,7 @@ package me.timelesspvp.timelesspvp5.dataClasses;
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
@@ -50,10 +51,13 @@ public class LivingEntityData {
         if (buffs.containsKey(key)) {
             buffs.get(key).cancel();
             buffs.remove(key);
-            Player p = Bukkit.getPlayer(uuid);
-            PersistentDataContainer pNBT = p.getPersistentDataContainer();
-            pNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
-                    key), PersistentDataType.BYTE, (byte) 0);
+
+            LivingEntity entity = (LivingEntity) Bukkit.getEntity(uuid);
+            if (Bukkit.getEntity(uuid) == null) {
+                entity = Bukkit.getPlayer(uuid);
+            }
+            PersistentDataContainer pNBT = entity.getPersistentDataContainer();
+            pNBT.remove(new NamespacedKey(TimelessPvP5.getPlugin(), key));
         }
     }
 
@@ -67,12 +71,16 @@ public class LivingEntityData {
     }
     public void removeDebuff(String key) {
         if (debuffs.containsKey(key)) {
+            Bukkit.getLogger().info("removedebuff");
             debuffs.get(key).cancel();
             debuffs.remove(key);
-            Player p = Bukkit.getPlayer(uuid);
-            PersistentDataContainer pNBT = p.getPersistentDataContainer();
-            pNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
-                    key), PersistentDataType.BYTE, (byte) 0);
+
+            LivingEntity entity = (LivingEntity) Bukkit.getEntity(uuid);
+            if (Bukkit.getEntity(uuid) == null) {
+                entity = Bukkit.getPlayer(uuid);
+            }
+            PersistentDataContainer pNBT = entity.getPersistentDataContainer();
+            pNBT.remove(new NamespacedKey(TimelessPvP5.getPlugin(), key));
         }
     }
 }
