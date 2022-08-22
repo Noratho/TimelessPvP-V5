@@ -1,6 +1,6 @@
 package me.timelesspvp.timelesspvp5.kits;
 
-import me.timelesspvp.timelesspvp5.helperMethods;
+import me.timelesspvp.timelesspvp5.helperMethods.HelperMethods;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -48,7 +48,7 @@ public class K03MelonData {
         p.addPotionEffect(pSpeed);
 
         // loc
-        Location loc = helperMethods.getLocationConfig("melon");
+        Location loc = HelperMethods.getLocationConfig("melon");
         p.teleport(loc);
     }
 
@@ -66,7 +66,7 @@ public class K03MelonData {
     public static ItemStack getStickOfPower() {
         ItemStack stickOfPower = new ItemStack(Material.STICK, 1);
         ItemMeta stickOfPowerMeta = stickOfPower.getItemMeta();
-        stickOfPowerMeta.addEnchant(Enchantment.DAMAGE_ALL, 8, true);
+        stickOfPowerMeta.addEnchant(Enchantment.DAMAGE_ALL, 7, true);
         stickOfPowerMeta.setDisplayName(
                 ChatColor.DARK_RED + "" + ChatColor.BOLD + "Stick_of_Power");
         stickOfPower.setItemMeta(stickOfPowerMeta);
@@ -75,7 +75,7 @@ public class K03MelonData {
     public static ItemStack getDerpAirlines() {
         ItemStack derpAirlines = new ItemStack(Material.MELON_SEEDS, 1);
         ItemMeta derpAirlinesMeta = derpAirlines.getItemMeta();
-        derpAirlinesMeta.addEnchant(Enchantment.KNOCKBACK, 25, true);
+        derpAirlinesMeta.addEnchant(Enchantment.KNOCKBACK, 10, true);
         derpAirlinesMeta.setDisplayName(
                 ChatColor.GREEN + "" + ChatColor.BOLD + "Derp_Airlines");
         derpAirlines.setItemMeta(derpAirlinesMeta);

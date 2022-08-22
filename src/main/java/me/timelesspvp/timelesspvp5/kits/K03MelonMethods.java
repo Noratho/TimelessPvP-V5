@@ -24,9 +24,8 @@ public class K03MelonMethods {
         spawnLoc.setY(spawnLoc.getY() - 0.05);
 
         Egg egg = p.getWorld().spawn(spawnLoc, Egg.class);
-//        egg.setVisualFire(true);
-        egg.setCustomName("Egg :D");
-        egg.setVelocity(p.getLocation().getDirection().multiply(1.2));
+        // add 1 in 8 chance to have flaming egg
+        egg.setVelocity(p.getLocation().getDirection().multiply(1.3));
         egg.setShooter(p);
 
         PersistentDataContainer eggNBT = egg.getPersistentDataContainer();
@@ -47,15 +46,15 @@ public class K03MelonMethods {
         PersistentDataContainer victimNBT = victim.getPersistentDataContainer();
 
         return new BukkitRunnable() {
-            int timer = 3;
+            int timer = 5;
             final ItemStack melon = new ItemStack(Material.MELON_SLICE);
             UUID victimUUID = victim.getUniqueId();
 
             @Override
             public void run() {
-                if (timer != 0) {
+                if (timer < 0) {
                     // extra is speed in this case
-                    double offset = 0.01 + hits*0.01;
+                    double offset = 0.01 + hits*0.02;
                     victim.getWorld().spawnParticle(Particle.ITEM_CRACK,
                             victim.getLocation().add(0, 2.2, 0),hits*10,
                             offset, offset, offset, 0.05, melon);
