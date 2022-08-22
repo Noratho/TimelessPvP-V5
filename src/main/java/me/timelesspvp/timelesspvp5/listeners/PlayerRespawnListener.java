@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import me.timelesspvp.timelesspvp5.outsourceMethods;
+import me.timelesspvp.timelesspvp5.outsourceMethods.OutsourceMethods;
 
 public class PlayerRespawnListener implements Listener {
 
@@ -22,7 +22,7 @@ public class PlayerRespawnListener implements Listener {
         if (!pNBT.get(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "state"), PersistentDataType.STRING).equals("out")) {
 
-            outsourceMethods.lobbyProtocol(p);
+            OutsourceMethods.lobbyProtocol(p);
         }
     }
 }

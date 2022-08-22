@@ -1,7 +1,7 @@
 package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
-import me.timelesspvp.timelesspvp5.outsourceMethods;
+import me.timelesspvp.timelesspvp5.outsourceMethods.OutsourceMethods;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,7 +18,7 @@ public class PlayerLeaveOrJoinListener implements Listener {
     // Player DC
     @EventHandler
     public void onPLayerLeave(PlayerQuitEvent e) {
-        outsourceMethods.leaveProtocol(e.getPlayer());
+        OutsourceMethods.leaveProtocol(e.getPlayer());
     }
 
     // Player Connect

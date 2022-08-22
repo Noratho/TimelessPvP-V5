@@ -1,7 +1,7 @@
 package me.timelesspvp.timelesspvp5;
 
 import me.timelesspvp.timelesspvp5.commands.LeaveArenaCommand;
-import me.timelesspvp.timelesspvp5.commands.lobbyCommand;
+import me.timelesspvp.timelesspvp5.commands.LobbyCommand;
 import me.timelesspvp.timelesspvp5.commands.ReloadConfigCommand;
 import me.timelesspvp.timelesspvp5.dataClasses.LivingEntityData;
 import me.timelesspvp.timelesspvp5.dataClasses.PlayerData;
@@ -98,7 +98,7 @@ public final class TimelessPvP5 extends JavaPlugin {
         // Commands
         getCommand("leave").setExecutor(new LeaveArenaCommand());
         getCommand("reloadConfig").setExecutor(new ReloadConfigCommand());
-        getCommand("lobby").setExecutor(new lobbyCommand());
+        getCommand("lobby").setExecutor(new LobbyCommand());
 
 
         // Configs

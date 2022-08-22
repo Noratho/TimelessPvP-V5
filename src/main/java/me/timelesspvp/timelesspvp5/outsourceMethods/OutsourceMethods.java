@@ -1,5 +1,7 @@
-package me.timelesspvp.timelesspvp5;
+package me.timelesspvp.timelesspvp5.outsourceMethods;
 
+import me.timelesspvp.timelesspvp5.helperMethods.HelperMethods;
+import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import me.timelesspvp.timelesspvp5.dataClasses.PlayerData;
 import me.timelesspvp.timelesspvp5.kits.*;
 import org.bukkit.*;
@@ -12,13 +14,11 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitScheduler;
 
-public class outsourceMethods {
-
+public class OutsourceMethods {
 
     public static void openMenu(Player p) {
         Inventory inv = Bukkit.createInventory(p,
                 27, ChatColor.DARK_AQUA + "Choose your kit");
-
 
         // Archer
         ItemStack archerSel = K01ArcherData.getSel();
@@ -49,14 +49,14 @@ public class outsourceMethods {
         if (pData.getActiveReloads() != null){
             pData.cancelActiveReloads();
         }
-        helperMethods.removeMarks(p);
+        HelperMethods.removeMarks(p);
 
         PersistentDataContainer pNBT = p.getPersistentDataContainer();
 
         p.getInventory().clear();
-        helperMethods.removeEffects(p);
+        HelperMethods.removeEffects(p);
         p.setGameMode(GameMode.ADVENTURE);
-        Location loc = helperMethods.getLocationConfig("lobby");
+        Location loc = HelperMethods.getLocationConfig("lobby");
 
         // Delay teleport by 1 tick otherwise will spawn at spawnpoint
         BukkitScheduler scheduler = TimelessPvP5.getPlugin().getServer().getScheduler();
@@ -112,8 +112,8 @@ public class outsourceMethods {
         pNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "state"), PersistentDataType.STRING, "out");
 
-        helperMethods.removeOldCombat(p);
-        helperMethods.removeMarks(p);
+        HelperMethods.removeOldCombat(p);
+        HelperMethods.removeMarks(p);
     }
 
 

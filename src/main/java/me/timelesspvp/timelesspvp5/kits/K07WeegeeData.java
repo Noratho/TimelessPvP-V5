@@ -1,9 +1,8 @@
 package me.timelesspvp.timelesspvp5.kits;
 
-import me.timelesspvp.timelesspvp5.helperMethods;
+import me.timelesspvp.timelesspvp5.helperMethods.HelperMethods;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -62,7 +61,7 @@ public class K07WeegeeData {
         p.addPotionEffect(pWaterB);
 
         // loc
-        Location loc = helperMethods.getLocationConfig("weegee");
+        Location loc = HelperMethods.getLocationConfig("weegee");
         p.teleport(loc);
     }
 

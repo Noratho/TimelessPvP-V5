@@ -3,7 +3,7 @@ package me.timelesspvp.timelesspvp5.kits;
 import me.timelesspvp.timelesspvp5.dataClasses.ItemWSlot;
 import me.timelesspvp.timelesspvp5.dataClasses.RunnableData;
 import me.timelesspvp.timelesspvp5.dataClasses.SoundData;
-import me.timelesspvp.timelesspvp5.helperMethods;
+import me.timelesspvp.timelesspvp5.helperMethods.HelperMethods;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -51,7 +51,7 @@ public class K08PirateData {
         p.addPotionEffect(pSat);
 
         // loc
-        Location loc = helperMethods.getLocationConfig("pirate");
+        Location loc = HelperMethods.getLocationConfig("pirate");
         p.teleport(loc);
     }
     public static ItemStack getSel() {

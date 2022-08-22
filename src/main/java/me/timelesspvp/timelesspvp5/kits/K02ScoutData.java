@@ -4,21 +4,19 @@ import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import me.timelesspvp.timelesspvp5.dataClasses.ItemWSlot;
 import me.timelesspvp.timelesspvp5.dataClasses.RunnableData;
 import me.timelesspvp.timelesspvp5.dataClasses.SoundData;
-import me.timelesspvp.timelesspvp5.helperMethods;
+import me.timelesspvp.timelesspvp5.helperMethods.HelperMethods;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.javatuples.Pair;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class K02ScoutData {
@@ -64,7 +62,7 @@ public class K02ScoutData {
 
 
         // Spawn Location
-        Location loc = helperMethods.getLocationConfig("scout");
+        Location loc = HelperMethods.getLocationConfig("scout");
         p.teleport(loc);
     }
 

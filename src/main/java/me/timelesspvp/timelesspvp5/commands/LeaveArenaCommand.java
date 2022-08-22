@@ -1,16 +1,11 @@
 package me.timelesspvp.timelesspvp5.commands;
 
-import me.timelesspvp.timelesspvp5.outsourceMethods;
-import org.bukkit.Location;
+import me.timelesspvp.timelesspvp5.outsourceMethods.OutsourceMethods;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.potion.PotionEffect;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Arrays;
 
 public class LeaveArenaCommand implements CommandExecutor {
 
@@ -24,7 +19,7 @@ public class LeaveArenaCommand implements CommandExecutor {
         if (sender instanceof Player) {
             Player p = (Player) sender;
 
-            outsourceMethods.leaveProtocol(p);
+            OutsourceMethods.leaveProtocol(p);
         }
 
         return true;

@@ -2,7 +2,7 @@ package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import me.timelesspvp.timelesspvp5.kits.*;
-import me.timelesspvp.timelesspvp5.outsourceMethods;
+import me.timelesspvp.timelesspvp5.outsourceMethods.OutsourceMethods;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
@@ -40,11 +40,11 @@ public class RightClickListener implements Listener {
             switch (ChatColor.stripColor(e.getItem().getItemMeta().getDisplayName())) {
 
                 case "zzzPick a Classzzz" -> {
-                    outsourceMethods.openMenu(p);
+                    OutsourceMethods.openMenu(p);
                 }
 
                 case "Heal Token" -> {
-                    outsourceMethods.useHealToken(p);
+                    OutsourceMethods.useHealToken(p);
                     e.getItem().setAmount(e.getItem().getAmount() - 1);
                 }
 
@@ -72,6 +72,7 @@ public class RightClickListener implements Listener {
                         K08PirateMethods.shootMusket(p);
                         // remove musket ball
                         for (ItemStack items : p.getInventory().getContents()) {
+                            if (items == null) {continue;}
                             String name = ChatColor.stripColor(items.getItemMeta().getDisplayName());
                             if (name.equals("zzzBulletzzz")) {
                                 items.setAmount(items.getAmount() - 1);

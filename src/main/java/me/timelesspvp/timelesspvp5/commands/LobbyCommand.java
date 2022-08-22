@@ -1,7 +1,7 @@
 package me.timelesspvp.timelesspvp5.commands;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
-import me.timelesspvp.timelesspvp5.outsourceMethods;
+import me.timelesspvp.timelesspvp5.outsourceMethods.OutsourceMethods;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -15,7 +15,7 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 
-public class lobbyCommand implements CommandExecutor {
+public class LobbyCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender,
@@ -42,7 +42,7 @@ public class lobbyCommand implements CommandExecutor {
             TimelessPvP5.addPlrDataEntry(p.getUniqueId(), storage, p.getLocation(), p.getGameMode());
         }
 
-        outsourceMethods.lobbyProtocol(p);
+        OutsourceMethods.lobbyProtocol(p);
 
         return true;
     }

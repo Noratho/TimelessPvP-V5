@@ -30,7 +30,7 @@ public class K08PirateMethods {
         data.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                 "projKitOrig"), PersistentDataType.STRING, "pirate");
 
-        musketBall.setVelocity(p.getLocation().getDirection().multiply(3));
+        musketBall.setVelocity(p.getLocation().getDirection().multiply(3.5));
         musketBall.setShooter(p);
         musketBall.setPickupStatus(AbstractArrow.PickupStatus.DISALLOWED);
         p.spawnParticle(Particle.CAMPFIRE_SIGNAL_SMOKE, p.getEyeLocation(), 10);

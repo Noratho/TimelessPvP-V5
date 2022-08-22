@@ -1,6 +1,6 @@
 package me.timelesspvp.timelesspvp5.kits;
 
-import me.timelesspvp.timelesspvp5.helperMethods;
+import me.timelesspvp.timelesspvp5.helperMethods.HelperMethods;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -53,7 +53,7 @@ public class K01ArcherData {
 
 
         // Spawn Location
-        Location loc = helperMethods.getLocationConfig("archer");
+        Location loc = HelperMethods.getLocationConfig("archer");
         p.teleport(loc);
 
     }

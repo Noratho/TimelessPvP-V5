@@ -2,7 +2,7 @@ package me.timelesspvp.timelesspvp5.listeners;
 
 import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import me.timelesspvp.timelesspvp5.kits.*;
-import me.timelesspvp.timelesspvp5.helperMethods;
+import me.timelesspvp.timelesspvp5.helperMethods.HelperMethods;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -37,7 +37,7 @@ public class InventoryClickListener implements Listener {
                 case ARROW -> {
 
                     p.getInventory().clear();
-                    helperMethods.removeEffects(p);
+                    HelperMethods.removeEffects(p);
                     p.closeInventory();
 
                     K01ArcherData.giveKit(p);
@@ -47,7 +47,7 @@ public class InventoryClickListener implements Listener {
                 case BLACK_STAINED_GLASS -> {
 
                     p.getInventory().clear();
-                    helperMethods.removeEffects(p);
+                    HelperMethods.removeEffects(p);
                     p.closeInventory();
 
                     K02ScoutData.giveKit(p);
@@ -56,7 +56,7 @@ public class InventoryClickListener implements Listener {
                 case GLISTERING_MELON_SLICE -> {
 
                     p.getInventory().clear();
-                    helperMethods.removeEffects(p);
+                    HelperMethods.removeEffects(p);
                     p.closeInventory();
 
                     K03MelonData.giveKit(p);
@@ -66,7 +66,7 @@ public class InventoryClickListener implements Listener {
                 case PLAYER_HEAD -> {
 
                     p.getInventory().clear();
-                    helperMethods.removeEffects(p);
+                    HelperMethods.removeEffects(p);
                     p.closeInventory();
 
                     K07WeegeeData.giveKit(p);
@@ -75,7 +75,7 @@ public class InventoryClickListener implements Listener {
                 case FLINT -> {
 
                     p.getInventory().clear();
-                    helperMethods.removeEffects(p);
+                    HelperMethods.removeEffects(p);
                     p.closeInventory();
 
                     K08PirateData.giveKit(p);
@@ -90,7 +90,7 @@ public class InventoryClickListener implements Listener {
             if (haveMatched) {
                 pNBT.set(new NamespacedKey(TimelessPvP5.getPlugin(),
                         "state"), PersistentDataType.STRING, "in");
-                helperMethods.giveOldCombat(p);
+                HelperMethods.giveOldCombat(p);
             }
 
             Bukkit.getLogger().info(String.valueOf(e.getRawSlot()));

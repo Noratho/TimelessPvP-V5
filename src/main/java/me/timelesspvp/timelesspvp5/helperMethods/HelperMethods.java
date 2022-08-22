@@ -1,19 +1,16 @@
-package me.timelesspvp.timelesspvp5;
+package me.timelesspvp.timelesspvp5.helperMethods;
 
+import me.timelesspvp.timelesspvp5.TimelessPvP5;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 
-import java.util.UUID;
-
-public class helperMethods {
+public class HelperMethods {
 
 
     public static void removeEffects(Player p) {

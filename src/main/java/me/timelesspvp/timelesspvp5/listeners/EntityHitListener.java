@@ -46,11 +46,15 @@ public class EntityHitListener implements Listener {
                         int stacks = (int) victimNBT.get(new NamespacedKey(TimelessPvP5.getPlugin(),
                                 "melonMark"), PersistentDataType.BYTE);
 
-                        double yAdd = stacks/(1.7*Math.sqrt(stacks));
+                        double yAdd = stacks/(1.5*Math.sqrt(stacks));
                         victim.setVelocity(victim.getVelocity()
                                 .add(new Vector(0, yAdd, 0)));
 
-                        TimelessPvP5.getEnt(victim.getUniqueId()).removeDebuff("melonMark");
+                        if (victim instanceof Player) {
+                            TimelessPvP5.getPlr(victim.getUniqueId()).removeDebuff("melonMark");
+                        } else {
+                            TimelessPvP5.getEnt(victim.getUniqueId()).removeDebuff("melonMark");
+                        }
                         e.setCancelled(true);
                     }
                 }
